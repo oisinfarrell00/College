@@ -1,11 +1,30 @@
 // -------------------------------------------------------------------------
 
+import java.io.*;
+
 /**
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
  *
  *  @author
  *  @version HT 2020
+ *
+ *
+ *                          insert  selection   merge recursive merge iterative quick
+ *  10 random               39.0ms  66.0ms      53.0ms          56.0ms          69.0ms
+ *  100 random              47.0ms  53.0ms      60.0ms          59.0ms          54.0ms
+ *  1000 random             141ms   116ms       102ms           105ms           94ms
+ *  1000 few unique         138ms   116ms       100ms           85ms            94ms
+ *  1000 nearly ordered     116ms   113ms       109ms           96ms            116ms
+ *  1000 reversed           122ms   116ms       116ms           100ms           116ms
+ *  1000 sorted             110ms   109ms       109ms           94ms            125ms
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 
 class SortComparison {
@@ -166,13 +185,31 @@ class SortComparison {
 
 
 
-    public static void main(String[] args) {
-    double toSort[] = {7,1,3,5,8,2,4,6,9};
-    double []sorted=quickSort(toSort, 0, toSort.length-1);
-    for(int i=0; i<sorted.length; i++){
-        System.out.print(sorted[i] + ",");
+    public static void main(String[] args) throws IOException {
+        double startTime = System.currentTimeMillis();
+        File file = new File("C:\\Users\\oisin\\Documents\\" +
+                "CollegeOld\\Second-Year\\Algorithms and Data Structures" +
+                "\\Algorithms and Data Structures\\Semester2\\src\\numbersSorted1000.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String st;
+        double [] tester = new double [1000];
+        double [] sorted;// = new double [10];
+        int index = 0;
+        double number=0;
+        while ((st = br.readLine()) != null) {
+            number = Double.valueOf(st);
+            tester[index++] = number;
+        }
+        //sorted = mergeSortIterative(tester);
+        sorted = quickSort(tester, 0, tester.length-1);
+        for(int i=0; i<sorted.length; i++){
+            System.out.println(i+1+": "+sorted[i]);
+        }
+        double endTime = System.currentTimeMillis();
+        double overallTime = endTime-startTime;
+        System.out.println("Runtime: "+overallTime);
     }
-    }
+
 
 }//end class
 
