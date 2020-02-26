@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
-
 public class SortComparisonTest {
         @Test
         public void testInsertionSort(){
@@ -55,7 +54,6 @@ public class SortComparisonTest {
             number = Double.valueOf(st);
             tester[index++] = number;
         }
-        //sorted = mergeSortIterative(tester);
         sorted = SortComparison.quickSort(tester, 0, tester.length-1);
         for(int i=0; i<sorted.length; i++){
             System.out.println(i+1+": "+sorted[i]);

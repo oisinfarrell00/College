@@ -81,7 +81,6 @@ class SortComparison {
                 a[i]=a[j];
                 a[j]=temp;
             }
-
         }
         double temp = a[i+1];
         a[i+1] = a[r];
