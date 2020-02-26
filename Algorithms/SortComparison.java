@@ -19,12 +19,6 @@ import java.io.*;
  *  1000 reversed           122ms   116ms       116ms           100ms           116ms
  *  1000 sorted             110ms   109ms       109ms           94ms            125ms
  *
- *
- *
- *
- *
- *
- *
  */
 
 class SortComparison {
@@ -161,10 +155,8 @@ class SortComparison {
         for (int i=0; i<m; i++){
             c[i]=a[q + 1 + i];
         }
-
         l[n] = Double.POSITIVE_INFINITY;
         c[m] = Double.POSITIVE_INFINITY;
-
         int i=0, j =0;
         for(int k = p; k<r+1; k++){
             if(l[i]<= c[j]){
@@ -178,16 +170,5 @@ class SortComparison {
     static double[] mergeSortRecursive (double a[]) {
         return mergeSortRecursive(a, 0, a.length-1);
     }//end mergeSortRecursive
-
-
-
-
-
-
-
-
-
-
-
 }//end class
 
