@@ -1,3 +1,7 @@
+//package temp;
+import java.io.*;
+import java.util.*;
+
 /*
  * A Contest to Meet (ACM) is a reality TV contest that sets three contestants at three random
  * city intersections. In order to win, the three contestants need all to meet at any intersection
@@ -13,184 +17,188 @@
  * streets that the contestants can use to traverse the city.
  *
  * This class implements the competition using Dijkstra's algorithm
+ * 
+ * 
+ * @author John Sinclair
  */
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class CompetitionDijkstra {
-    public static int numberOfStreets, numberOfIntersection, nodeA, nodeB, nodeC;
-    double[][] adjTable;
-       public static double [][] graphA, graphB, graphC;
 
-    /**
-     * @param filename: A filename containing the details of the city road network
-     * @param sA, sB, sC: speeds for 3 contestants
-    */
-    CompetitionDijkstra (String filename, int sA, int sB, int sC) throws IOException {
-        readFile(filename);
-        initPlayers();
-        for(int i=0; i< numberOfIntersection; i++){
-            dijkstra(adjTable, i);
-        }
-        fillTables(sA,sB,sC);
-    }
+	String filename = "";
+	int sA = 0;
+	int sB = 0;
+	int sC = 0;
+	int intersections = 0;
+	int streets = 0;
+	boolean valid = true;
 
-    public void fillTables(int sA, int sB, int sC){
-        graphA = new double[numberOfIntersection][numberOfIntersection];
-        graphB = new double[numberOfIntersection][numberOfIntersection];
-        graphC = new double[numberOfIntersection][numberOfIntersection];
-        for(int i=0; i < numberOfIntersection; i++){
-            for(int j=0; j < numberOfIntersection; j++){
-                graphA[i][j]=(adjTable[i][j]/sA);
-                graphB[i][j]=adjTable[i][j]/sB;
-                graphC[i][j]=adjTable[i][j]/sC;
-            }
-        }
-    }
+	ArrayList<String> graphString = null;
+	double[][] graph = null;
 
+	/**
+	 * @param filename: A filename containing the details of the city road network
+	 * @param sA,       sB, sC: speeds for 3 contestants
+	 */
+	CompetitionDijkstra(String filename, int sA, int sB, int sC) {
+		this.filename = filename;
+		this.sA = sA;
+		this.sB = sB;
+		this.sC = sC;
+		this.intersections = 0;
+		this.streets = 0;
+		this.graphString = new ArrayList<String>();
+		parseFile(fileScanner(filename));
+	}
 
-    int minDistance(double dist[], Boolean sptSet[])
-    {
-        double min = Integer.MAX_VALUE;
-                int min_index = -1;
-        for (int v = 0; v < numberOfIntersection; v++)
-            if (sptSet[v] == false && dist[v] <= min) {
-                min = dist[v];
-                min_index = v;
-            }
-        return min_index;
-    }
+	private Scanner fileScanner(String fileName) {
+		try {
+			Scanner fileScan = new Scanner(new File(fileName));
+			return fileScan;
+		} catch (Exception e) {
+			valid = false;
+			return null;
+		}
+	}
 
-    void dijkstra(double graph[][], int src)
-    {
-        double dist[] = new double[numberOfIntersection]; // The output array. dist[i] will hold
-        Boolean sptSet[] = new Boolean[numberOfIntersection];
-        for (int i = 0; i < numberOfIntersection; i++) {
-            dist[i] = Integer.MAX_VALUE;
-            sptSet[i] = false;
-        }
-        dist[src] = 0;
-        for (int count = 0; count < numberOfIntersection - 1; count++) {
-            int u = minDistance(dist, sptSet);
-            sptSet[u] = true;
-            for (int v = 0; v < numberOfIntersection; v++) {
-                if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
-                    dist[v] = dist[u] + graph[u][v];
-                    dist[v] = dist[u] + graph[u][v];
-                    double val = dist[v]*100;
-                    val = Math.round(val);
-                    dist[v] = val/100;
-                }
-            }
-        }
-        for(int i=0; i<numberOfIntersection; i++){
-            adjTable[src][i]=dist[i];
-        }
-    }
+	private void parseFile(Scanner scannedFile) {
+		if (valid) {
+			graphString.clear();
+			try {
+				if (scannedFile.hasNextInt()) {
+					this.intersections = scannedFile.nextInt();
+				}
+				if (scannedFile.hasNextInt()) {
+					this.streets = scannedFile.nextInt();
+					scannedFile.nextLine();
+				}
+				while (scannedFile.hasNextLine()) {
+					graphString.add(scannedFile.nextLine());
+				}
+			} catch (Exception e) {
+			}
+		}
+	}
 
-    /**
-    * @return int: minimum minutes that will pass before the three contestants can meet
-     */
-    public static int timeRequiredforCompetition() throws IOException {
-        int speedA = 1;
-        int speedB = 2;
-        int speedC = 3;
-        CompetitionDijkstra competitionDijkstra = new CompetitionDijkstra("tinyEWD.txt", speedA,speedB,speedC);
-        int commonNode = getCommonNode(graphA, graphB, graphC);
-        System.out.println("common: "+commonNode);
-        double timeA = graphA[commonNode][nodeA];
-        double timeB = graphB[commonNode][nodeB];
-        double timeC = graphC[commonNode][nodeC];
-        double showTime = getMaxDouble(timeA, timeB, timeC) * 1000;
-        return (int)showTime;
-    }
+	/**
+	 * @return int: minimum minutes that will pass before the three contestants can
+	 *         meet
+	 */
+	public int timeRequiredforCompetition() {
+		if (!valid) {
+			return -1;
+		}
+		if (this.intersections == 0) {
+			return -1;
+		}
+		if ((sA > 100 || sA < 50) || (sB > 100 || sB < 50) || (sC > 100 || sC < 50)) {
+			return -1;
+		}
 
-    public static void main(String[] args) throws IOException {
-    int time = timeRequiredforCompetition();
-    System.out.println("Total run time: "+time+" minutes");
-    }
+		int slowestSpeed = 0;
+		if (this.sA < this.sB && this.sA < this.sC)
+			slowestSpeed = sA;
+		else if (this.sB < this.sA && this.sB < this.sC)
+			slowestSpeed = this.sB;
+		else
+			slowestSpeed = this.sC;
 
-    public void initPlayers(){
-        nodeA = (int)(Math.random()*(numberOfIntersection));
-        nodeB = (int)(Math.random()*(numberOfIntersection));
-        nodeC = (int)(Math.random()*(numberOfIntersection));
-        while(nodeB == nodeA) {
-            if (nodeB == nodeA) {
-                nodeB = (int)(Math.random()*numberOfIntersection);
-            }
-        }
-        while(nodeC == nodeA || nodeC == nodeB) {
-            if (nodeC == nodeA || nodeC == nodeB) {
-                nodeC = (int)(Math.random()*numberOfIntersection);
-            }
-        }
-    }
+		double[][] dist = new double[this.intersections][this.intersections];
 
-    public void readFile(String file) throws FileNotFoundException, IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String street;
-        int index = 0;
-        numberOfIntersection = Integer.parseInt(reader.readLine());
-        numberOfStreets = Integer.parseInt(reader.readLine());
-        String[] streets = new String[numberOfStreets];
-        while ((street = reader.readLine()) != null) {
-            streets[index] = street;
-            index++;
-        }
-        reader.close();
-        createAdjacencyTable(streets);
-    }
+		for (int i = 0; i < this.intersections; i++) {
+			for (int j = 0; j < this.intersections; j++) {
+				dist[i][j] = Double.POSITIVE_INFINITY;
+			}
+		}
 
-    public void createAdjacencyTable(String[] streets) {
-        int src;
-        int dst;
-        double length;
-        adjTable = new double[numberOfIntersection][numberOfIntersection];
-        for(int i = 0; i < streets.length; i++) {
-            String[] street = streets[i].split(" ");
-            src = Integer.parseInt(street[0]);
-            dst = Integer.parseInt(street[1]);
-            length = Double.parseDouble(street[2]);
-            adjTable[dst][src] = length;
-        }
-        //printAdjTable();
-    }
+		graph = createGraph();
+		double maxDistance = dijkstra();
 
-    public static int getCommonNode(double[][] aTimeGraph, double[][] bTimeGraph, double[][] cTimeGraph) {
-        double[] aTimes = new double[numberOfIntersection];
-        double[] bTimes = new double[numberOfIntersection];
-        double[] cTimes = new double[numberOfIntersection];
-        for (int i = 0; i < numberOfIntersection; i++) {
-            aTimes[i] = aTimeGraph[i][nodeA];
-            bTimes[i] = bTimeGraph[i][nodeB];
-            cTimes[i] = cTimeGraph[i][nodeC];
-        }
+		if (maxDistance == -1)
+			return -1;
+		else
+			return (int) ((Math.ceil((maxDistance * 1000) / slowestSpeed)));
+	}
 
-        double minIndTime = Double.MAX_VALUE;
-        int node = -1;
+	private double[][] createGraph() {
+		double[][] graph = new double[this.intersections][this.intersections];
 
-        for (int i = 0; i < numberOfIntersection; i++) {
-            double a = aTimes[i];
-            double b = bTimes[i];
-            double c = cTimes[i];
-            double indTime = getMaxDouble(a, b, c);
-            if (indTime < minIndTime) {
-                minIndTime = indTime;
-                node = i;
-            }
-        }
-        return node;
-    }
+		for (int i = 0; i < this.intersections; i++) {
+			for (int j = 0; j < this.intersections; j++) {
+				graph[i][j] = Double.POSITIVE_INFINITY;
+			}
+		}
+		for (int i = 0; i < this.intersections; i++) {
+			graph[i][i] = 0;
+		}
 
-    public static double getMaxDouble(double a, double b, double c) {
-        double max = a;
-        if (b > max)
-            max = b;
-        if (c > max)
-            max = c;
-        return max;
-    }
+		for (int i = 0; (i < this.graphString.size()); i++) {
+			Scanner lineReader = new Scanner(this.graphString.get(i));
+			int street = lineReader.nextInt();
+			int connectingStreet = lineReader.nextInt();
+			double distance = lineReader.nextDouble();
+
+			graph[street][connectingStreet] = distance;
+			lineReader.close();
+		}
+
+		return graph;
+	}
+
+	private double dijkstra() {
+		double currentMaxDist = 0;
+		for (int i = 0; i < this.intersections; i++) {
+			int queueSize = 1;
+			double[] dist = new double[this.intersections];
+			boolean[] marked = new boolean[this.intersections];
+			boolean[] reached = new boolean[this.intersections];
+
+			for (int j = 0; j < this.intersections; j++) {
+				dist[j] = Double.POSITIVE_INFINITY;
+				marked[j] = false;
+				reached[j] = false;
+			}
+
+			dist[i] = 0;
+			reached[i] = true;
+
+			while (queueSize > 0) {
+				int indexOfShortest = getShortestPath(dist, marked);
+				for (int j = 0; j < intersections; j++) {
+					if (((graph[indexOfShortest][j] + dist[indexOfShortest]) < dist[j]) && (!marked[j])) {
+						dist[j] = (graph[indexOfShortest][j] + dist[indexOfShortest]);
+						queueSize++;
+						reached[j] = true;
+					}
+				}
+
+				marked[indexOfShortest] = true;
+				queueSize--;
+			}
+
+			double max = getHighestValue(dist);
+			if (max == Double.POSITIVE_INFINITY) {
+				return -1;
+			}
+			if (max > currentMaxDist) {
+				currentMaxDist = max;
+			}
+		}
+		return currentMaxDist;
+	}
+
+	private double getHighestValue(double[] dist) {
+		double highest = 0;
+		for (int i = 0; i < dist.length; i++)
+			highest = (dist[i] > highest) ? dist[i] : highest;
+		return highest;
+	}
+
+	private int getShortestPath(double[] dist, boolean[] marked) {
+		int shortest = 0;
+		for (int i = 1; i < dist.length; i++)
+			if ((dist[i] < dist[shortest] && !marked[i]) || marked[shortest]) {
+				shortest = i;
+			}
+		return shortest;
+	}
 }
