@@ -55,24 +55,21 @@ scheduler(void)
     runnableFound = 0; // DO NOT MODIFY
     // Loop over process table looking for process to run.
     // acquire(&ptable.lock);
-    int topPriority = -1;
-    struct proc *temp;
-    for(pix = 0; pix < NPROC; pix++){
-      temp = &ptable.proc[pix];
-      if (temp -> state != RUNNABLE)
-	continue;
-      if (topPriority == -1 || temp->prio < topPriority)
-	   topPriority = temp->prio;
-    }
-
     for(pix = 0; pix < NPROC; pix++){
       p = &ptable.proc[pix];
 
       if(p->state != RUNNABLE)
         continue;
-	
-      if (p-> prio > topPriority)
-	continue;
+      int highestPriority = 0;  
+      for (int index=0;index<NPROC;index++){
+        if (p->prio>ptable.proc[index].prio&&ptable.proc[index].state==RUNNABLE){
+          highestPriority=1;
+          break;
+        }
+      }
+      if (highestPriority){
+        continue;
+      }
       runnableFound = 1; // DO NOT MODIFY/DELETE/BYPASS
 
       
