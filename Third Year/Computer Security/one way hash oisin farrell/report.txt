@@ -1,0 +1,79 @@
+IV1013 VT20 – Introduction to Computer Security
+Crypto Lab – One-Way Hash Function and MAC
+Name: Oisin Farrell
+Email: oisinf@kth.se
+
+Task 2.1: Generating Message Digest and MAC
+In this task I experimented with the various one-way hash functions. 
+The command line for this was openssl dgst dgsttype filename where we 
+replaced filename with a file containing our kth email address. 
+
+Q1. Obsertavions and differences:
+- The algorithms grow in complexity with MD5 being the least complex and SHA256 being the most.
+- While MD5 is the least complex it is the fastest of the algorithms.
+- SHA256 is more resilient to hash collisions due to its larger size. 
+- The length of the hashes are different with MD5(128)<SHA1(160)<SHA256(256).
+- All three hash functions use both letters and numbers but do not appear to use symbols. 
+- None of the algorithms use capital letters.
+
+Q2. Hash Results of oisinf@kth.se:
+MD5(email.txt)= fa1205984364d28aebe20f82fb130618
+SHA1(email.txt)= f350b6400f293fe54213847afb060bbc35c5d8da
+SHA256(email.txt)= e01011f8980addf3c306da4e0a11766a5ebd993ce89988ee543e25f7eacb3e0d
+
+
+
+Task 2.2: Keyed Hash and HMAC
+In this task I took a look at hashing with a key. The command for this task was:
+openssl dgst -md5 -hmac "abcdefg" filename where once again the filename in question is 
+a file containing my KTH email address.
+
+Hash Results of oisinf@kth.se (Key: abcdefg): <-- Key length: 7
+    HMAC-MD5(email.txt)= 0950fced5417a7f49f837856d0e4d2a0
+    HMAC-SHA1(email.txt)= f93e23658ff5d7c4ec30001b85a328158991da9c
+    HMAC-SHA256(email.txt)= ae5acd7d16f38ee0f735bd9601c2c4cf0d8503ddc73412b1f145ed023c293f2c
+
+Hash Results of oisinf@kth.se (Key: abcdefghi): <-- Key length: 9
+    HMAC-MD5(email.txt)= 072338d723e1821dfe45f4ccde8575ed
+    HMAC-SHA1(email.txt)= f619c70f1d5b832712d09483d1e7e0159da86bd2
+    HMAC-SHA256(email.txt)= 137aa5d33bf6a57e6ce7e4b949806c847bfb128e435521d4ce9565d767f47d6e
+
+Hash Results of oisinf@kth.se (Key: abcdefghijklmnopqrstuvwxwz): <-- Key length: 26
+    HMAC-MD5(email.txt)= 71be962422312128175662b4b59b14f8
+    HMAC-SHA1(email.txt)= 2d02935dc3f492682d6209e9d8b362217be1c7c9
+    HMAC-SHA256(email.txt)= 9c2c52f41ea8108aeba3c8d3f5b5744a50aed5beb71a5fee093bbdc84c27ae25
+
+Above there are 3 varibale key lengths. As you can see this alters the encryption but not the length. Using the same key 
+results in the same encryption. 
+
+Q3. There is no fixed size key for HMAC. The longer the key the more secure the hasg will be. 
+    Using a small key is discouraged. Another reason for this is that the key should be an appropriate 
+    size. For example, one should not use a 128 bit key when using a 256 bit hash. This key would be more 
+    appropriate for MD5. 
+
+Q4. Hash Results of oisinf@kth.se (Key: IV1013-key):
+    HMAC-MD5(email.txt)= 80deebf4f7c0f7fe0e6ce7651d956718
+    HMAC-SHA1(email.txt)= aef03cc455ae6f9d6a75cbaf36b7dca43dbed1a0
+    HMAC-SHA256(email.txt)= 1c44b40dc775557419a2ebddda377c5c13e93f2d10ec8cc176c0723cbf3a15ec
+
+Task 2.3: The Randomness of One-way Hash
+In this task I was asked to generate a hash, alter the first bit and then generate the hash of the new 
+sequence as a means of comparision. To do this I first generated the hash just like in 2.1. I then used
+the GHEX binary editor to alter the first bit. I then hashed this sequence and compared. Below are the resultsÖ
+
+Hash Results of oisinf@kth.se:
+MD5(email.txt)= fa1205984364d28aebe20f82fb130618
+SHA256(email.txt)= e01011f8980addf3c306da4e0a11766a5ebd993ce89988ee543e25f7eacb3e0d
+
+Flip the first bit and encrypt:
+MD5: 29f38ed67d252c32639671bb909474ad
+SHA256: 0bf8bd184e413660ad45cf574422303c3f3b1fe310617a84f9b57310a57b3139
+
+Q5. Although only one bit was changed the entire encryption is different.
+Out of the 128 bit MD5 encrytpion only 59 bits were the same. For the 256 
+bit SHA256 encryption only 122 bits remained the same. This is a lot if we 
+consider that these changes were caused by a one bit change before the 
+encryption. To check how many bits had change I wrote a java program that 
+would count the bits for me. The program takes in the two hashes just like above and
+converts them to binary. It then compares the two new binary strings and computes
+how many bits are the same. 
