@@ -1,25 +1,25 @@
-#Introduction
+# Introduction
 In this assignment, you are provided a traditional UNIX-style password file. The file contains salted and hashed passwords. Your job is to reveal as many of the passwords as possible, by performing a dictionary attack where you generate password guesses, hash them, and match the result with the entries in the password file.  
 
 On a traditional Unix system, passwords are stored in encrypted form in a world-readable file /etc/passwd. Moreover, the encryption algorithm is widely known. This means that an attacker can attempt to discover one or more passwords on the system by encrypting a sequence of strings and comparing the results against the stored encrypted passwords of the system. If any of the trial encryptions match stored encrypted passwords, the attacker will know the corresponding cleartext password for that user and can then use it to access the user's account. This is a classic dictionary attack and explains why many systems enforce rules to ensure that user-generated passwords are not easily guessed words.
 
-#Password Cracking
+# Password Cracking
 Systematic password guessing involves both cleverness and brute force. Dictionary attacks are so named because a word list, or dictionary, is used to generate password guesses. A more sophisticated dictionary attack not only uses common words and phrases, but also attempts users' surnames, common pet names,  "worst passwords" from lists published on the web, etc. Such words and phrases may be prepended to the dictionary and then become available in the attack.
 
 A user may attempt to render his or her password unguessable by "mangling" the plaintext password in some algorithmic way. Some common "mangles" (ways to take a password and make it less easily guessable) are listed below. Assume the plaintext password is "string". You might:
 
-prepend a character to the string, e.g., 0string;
-append a character to the string, e.g., string9;
-delete the first character from the string, e.g., tring;
-delete the last character from the string, e.g., strin;
-reverse the string, e.g., gnirts;
-duplicate the string, e.g., stringstring;
-reflect the string, e.g., stringgnirts or gnirtsstring;
-uppercase the string, e.g., STRING;
-lowercase the string, e.g., string;
-capitalize the string, e.g., String;
-ncapitalize the string, e.g., sTRING;
-toggle case of the string, e.g., StRiNg or sTrInG.
+-prepend a character to the string, e.g., 0string;
+-append a character to the string, e.g., string9;
+-delete the first character from the string, e.g., tring;
+-delete the last character from the string, e.g., strin;
+-reverse the string, e.g., gnirts;
+-duplicate the string, e.g., stringstring;
+-reflect the string, e.g., stringgnirts or gnirtsstring;
+-uppercase the string, e.g., STRING;
+-lowercase the string, e.g., string;
+-capitalize the string, e.g., String;
+-ncapitalize the string, e.g., sTRING;
+-toggle case of the string, e.g., StRiNg or sTrInG.
 You only need to consider characters that are letters (uppercase and lowercase) and numbers;  so no special characters (such as "#", "¢", "?", etc) or control characters. (This goes against the general wisdom that says that a "good" password should consist of different kinds of characters, but it simplifies the assignment.)
 
 There are several programs available to system administrators to test the guessability of user passwords, as well as by hackers to perform dictionary attacks, such as John the Ripper  (Links to an external site.)and Crack (Links to an external site.).
@@ -37,7 +37,7 @@ Redo step 3, but using mangled versions of the words;
 Redo step 4, attempting to apply two mangles to each word.
 Design your program in such a way as to be as efficient as possible. For example, your program should stop searching with respect to a given user if you have cracked that password. Consider whether to use a breadth-first or depth-first search. Also consider if you should try to break one password at a time, of if you should try to match each guess against all entries in the password file. The algorithm only considers the first eight characters of a password, but the user might or might not take that into account. You do not have to break all passwords, but you should break at least the simple passwords (generated from words in the dictionary using one mangle). In general, if you can't break most of the passwords, you're not trying hard enough.
 
-#Encryption Specifics
+# Encryption Specifics
 On traditional UNIX system, passwords are encrypted and stored in the file /etc/passwd. The stored value is actually the result of encrypting a string of zeros with a key formed from the first eight characters of your password and a two-character "salt".
 
 The "salt" is a two-character string stored with a user's login information. Salt is used so that anyone guessing passwords has to guess on a per-user basis rather than a per-system basis. Also, in the case that two users have the same password, as long as they have different salt, their encrypted passwords will not be the same.
@@ -56,12 +56,12 @@ The encrypted password data field is thirteen characters long. The first two cha
 
 As a remark, newer systems make dictionary attacks more difficult by employing "shadow passwords." In a shadow password system, the password field in /etc/passwd is replaced with an 'x'. Actual encrypted passwords are stored in a file /etc/shadow which is not world-readable.
 
-#Implementation
+# Implementation
 In this assignment, a the cracker program is called PasswordCrack. It takes two arguments, and should be executed as follows:
 
 $ javac PasswordCrack.java 
 $ java PasswordCrack <dictionary> <passwd>
 The first argument <dictionary> is dictionary of words, with one word per line. The second argument <passwd> is the password file, containing the hashed passwords in the format described above. The cracked plaintext passwords are printed to the terminal (standard output), one per line. The passwords can be printed in any order, so as soon as you have cracked a password, just print it out. Do not write anything else besides passwords to the terminal! So no logging or debug messages. We will run your program and check its output, and everything your program writes will be taken for cracked passwords.
 
-#Environment
+# Environment
 This assignment is a programming exercise, and you should use Java to solve it. You can use any Java development environment of your choice; however, it is a requirement that the code you finally submit runs on the the course virtual machine. Furthermore, your submitted code should be possible to execute directly in a Linux shell, as described above in section "Implementation", so it should not depend on any IDE tool such NetBeans or Eclipse.   
