@@ -111,4 +111,4 @@ def rearangeBlocks(initial_state, goal_state):
 
 # run the planning algorithm
 rearangeBlocks(initialState, goalState)
-print("finished")
+print("finished") 
