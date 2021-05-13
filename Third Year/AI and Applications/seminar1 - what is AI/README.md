@@ -1,19 +1,9 @@
-# Lab work 6: Build and train a neural network
-The lab is about building and training a neural network
-Training a Neural Network in Tensor-flow
-To get an idea about Neural Network for the lab, see the youtube: 
-Build a deep neural network in 4 mins with TensorFlow in Colab
-## General
-For the lab, following is needed, OBS if you do not have the programming language install, do it before the lab:
+# Task: Overview - What is AI?
+Summarize the material in about 300 words, plus references. See the lectures and the literature.
 
-Python and following Python libraries:
+Important: you can only use sources outside the course. No powerpoint slides nor web sites created by Anne Håkansson may be used.
 
--    Numpy
+All statements must be supported by references. All references must include author (where applicable), title, date of publication (if available), publisher and ISBN/ISSN (if printed source) direct link (if online source), date of checking link (if online source).
 
--   Tensorflow
+Please also look at the question task connected to this task and hand in both this material and questions either as one document or as two separate documents. 
 
--  Keras
-For Lab instructions, see: ANN and Deep Learning,Tensorflow & KerasLinks to an external site.
-
-Building and training a neural network in Simbrain.
-You will not need to program the neurons and write the training algorithms. You use a tool for the network. In order to train the network you will need a data set. You can select an training set from the site referenced in the machine learning task
