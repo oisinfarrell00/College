@@ -1,4 +1,4 @@
-# Task: Overview - Machine Learning
+# Task: Overview - Neural Networks and Deep Learning
 Summarize the material in about 300 words, plus references. See the lectures and the literature.Important: you can only use sources outside the course.
 
 Important: you can only use sources outside the course. No powerpoint slides nor web sites created by Anne Håkansson may be used.
