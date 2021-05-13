@@ -1,4 +1,4 @@
-Purpose
+# Purpose
 The purpose of this assignment is that you will design a practical encryption application
 around a symmetric encryption algorithm. So you will write programs for key generation,
 data encryption, and data decryption that use the encryption algorithm.
@@ -6,7 +6,7 @@ The assignment is to implement a stream cipher. A stream cipher encrypts an arbi
 length of plaintext. It is described in Section 6.5.2 in Goodrich-Tamassia and the lecture
 notes of Symmetric Encryption I.
 
-Background
+## Background
 Stream Ciphers
 Stream Ciphers can be divided into synchronous and self-synchronizing encryption systems.
 Synchronous stream ciphers need a key (or seed) for the random number generator. If parts of
@@ -26,7 +26,7 @@ ord$(a) = ϕ(m). This will result in a pseudo-random sequence in the interval [1
 where all numbers are represented. Notice that 0 is not in the sequence and should not be
 given as a seed to x0. The offset b does not change the statistical properties.
 
-Statistical tests of randomness
+### Statistical tests of randomness
 The simplest method is to generate a bitmap (0 or 1 pixels) of say 300 x 300 and plot these as
 a bitmap. See example at https://www.random.org/analysis/ . The human brain is very good
 at discovering patterns.
@@ -35,7 +35,7 @@ statistics course is in the third year, you are not required to use these tests 
 RC4 ciphers
 https://en.wikipedia.org/wiki/RC4
 
-Implementation
+## Implementation
 In this assignment, a Stream Cipher implementation consists of a program:
 1. StreamCipher is a program that takes a plaintext message of a sequence of bytes
 and an encryption key as input. The output is a ciphertext consisting of a sequence of
@@ -48,7 +48,7 @@ the name given as the second argument <infile>, and write the resulting output t
 named <outfile>. All data files have the same format: binary files, i.e., a file consists of a
 sequence of bytes.
 
-Task 1. Simple Synchronous Stream Cipher
+### Task 1. Simple Synchronous Stream Cipher
 The first task is to write the StreamCipher program that generates a pseudo-random stream of
 bytes and combines it with an input that consists of plaintext (for encryption) or of ciphertext
 (for decryption). In the first case, the output will be the ciphertext, and in the second case, the
@@ -59,13 +59,13 @@ lecture Symmetric Key Encryption I. To generate a random byte, use the Random.Ne
 bound) method with the “bound” parameter set to 256.
 
 
-Reading Input Data
+### Reading Input Data
 Since you are dealing only with binary data in this assignment, you can use basic I/O streams
 in Java for reading and writing bytes. For example, you might find the different read/write
 methods of FileInputStream/FileOutputStream or
 BufferedInputStream/BufferedOutputStream to be suitable.
 
-Error Handling
+### Error Handling
 If the user gives incorrect parameters or the input data does not match the parameters, this
 should be detected, and an informative error message should be generated. (Java exceptions
 do not count as informative error messages.)
