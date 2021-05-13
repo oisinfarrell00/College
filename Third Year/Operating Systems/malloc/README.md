@@ -1,5 +1,5 @@
 # Next, previous, before and after.
-Johan Montelius
+Lecturer: Johan Montelius
 HT2019
 ## 1 Introduction
 This is an assignment where you will implement your own malloc using a
@@ -13,7 +13,7 @@ of available blocks. You could implement a strategy that will be able to
 return and coalesce a block in constant time. This is achieved by keeping
 hidden information in all blocks so that one can quickly determine if neighboring blocks are free. If neighbors are free the algorithm will merge these
 blocks. We will start with only one freelist to keep things simple but this is
-something that you should change in the nal implementation.
+something that you should change in the final implementation.
 Your implementation does not need to follow these guidelines but you can
 take them as a starting point. Feel free to improve or implement a dierent
 strategy (if it is equally good, better or have some advantage).
@@ -29,14 +29,14 @@ We will also refer to the block before and after a given block. This is
 referring to how they are ordered in memory. All blocks are of course in a
 sequence and given a block we can talk about the block immediately before
 it (lower address), or after it (higher address).
-When we free a block we should be able to nd the block before and after
+When we free a block we should be able to find the block before and after
 a block, and determine if they are free. I one or both are free then the blocks
 
 should be merged. This is the tricky part but if you get the basic operations
 right it should be a walk in the park.
 In this implementation we will start with one large 64 Ki byte block. This
 is also the largest block that we will be able to provide but you can extend
-this limit in your nal implementation (it will be slightly smaller since we
+this limit in your final implementation (it will be slightly smaller since we
 need some bytes for a header structure).
 ### 2.2 operations on a block
 A block (also often called chunk) consists of a head and a byte sequence. It
@@ -57,14 +57,14 @@ struct head * prev ; // 8 bytes pointer
 When you extend the implementation you can play around with how the
 head structure is represented. The important thing is that it is aligned to 8
 bytes i.e 8, 16 or 24 bytes. In the above declaration we have used the type
-uint16_t to make each size and status eld to be two bytes wide.
+uint16_t to make each size and status field to be two bytes wide.
 It is of course important that the head is as small as possible, since it is
 an overhead. If an application is requesting 8 bytes we have an overhead of
 24 bytes which is not very good but it will do for now.
 
 #### some numbers
 
-We will need some numbers as we go forward and dene some macros. The
+We will need some numbers as we go forward and define some macros. The
 true and false values require no explanation but the HEAD value is very important. It is the size of the head structure, 24 bytes, and we could of course
 have used the expression explicitly in the code but we might want to change
 it as we go.
@@ -102,7 +102,7 @@ by 8 bytes. On a 32-bit architecture this would have been 4 bytes.
 
 The arena is large block that we allocate in the beginning i.e. the whole
 heap. The size of this is limited since we will not be able to handle larger
-blocks than 64 Ki bytes (we only have a 16 bit size eld). The size of the
+blocks than 64 Ki bytes (we only have a 16 bit size field). The size of the
 heap will thus be rather small to start with but we will be able to change
 this later.
 
@@ -112,7 +112,7 @@ this later.
 
 The size information for a block will allow us to determine where the block
 after it is located. Implement a function after() that given a pointer to a
-block returns a pointer to the block after. You will nd the block if you take
+block returns a pointer to the block after. You will find the block if you take
 the current pointer, cast it to a character pointer and then add the size of
 the block plus the size of a header.
 
@@ -121,7 +121,7 @@ return ( struct head * ) ( . . . . . ) ;
 }
 
 In almost the same way you will be able to locate the block before a
-given block since we have the bsize eld in the header.
+given block since we have the bsize field in the header.
 
 struct head * before ( struct head * block ) {
 return ( struct head * ) ( . . . . . ) ;
@@ -130,9 +130,9 @@ return ( struct head * ) ( . . . . . ) ;
 
 #### split a block
 We also need a procedure that given a (large enough) block and a size, splits
-the block in two giving us a pointer to the second block. We rst calculate
+the block in two giving us a pointer to the second block. We first calculate
 the remaining size (the size of the block minus the requested size and size
-of a header). Once we know the remaining size we can nd the second part
+of a header). Once we know the remaining size we can find the second part
 (splt is after the block). We initialize the new block and patch the size of
 the block after to leave the blocks in a consistent state.
 
@@ -152,7 +152,7 @@ return splt ;
 #### a new block
 To begin with we have to create new block. We do this using the mmap()
 system call. This procedure will allocate new memory for our process and
-here we allocate an area as large as possible. In this rst run we only allow
+here we allocate an area as large as possible. In this first run we only allow
 one arena so if there is already one allocated we return a null pointer.
 Look-up the man pages for mmap() and see what the arguments mean.
 When you extend the implementation to handle larger blocks you will have
@@ -199,7 +199,7 @@ also set up a sentinel block in the end of the arena and mark the free ag
 to false. This will prevent anyone from trying to merge the block with the
 sentinel block.
 the free list
-All free blocks will be linked in a double linked list. We will in the rst
+All free blocks will be linked in a double linked list. We will in the first
 implementation only have one list and will not order it in any way. The list
 is double linked since we want to be able to extract a block from the list
 without having to search for its position. This will be important when we
@@ -236,7 +236,7 @@ dalloc() and dfree. When we are requested to allocate a new memory area
 we do the following:
 - Determine a suitable size that is an even multiple of ALIGN and not
 smaller than the minimum size.
-- Go through the freelist and nd the rst block that is large enough to
+- Go through the freelist and find the first block that is large enough to
 meet our request and unlink it from the list. If the freelist is empty
 you need to create the arena (if not already created).
 - If the found block is so large that we could split it in two then do so
@@ -280,7 +280,7 @@ return ;
 
 You should be done in five minutes, there is no hidden catch here.
 before you continue
-Implement the above functions in a le called dlmall.c. Also add a le
+Implement the above functions in a file called dlmall.c. Also add a file
 dlmall.h that holds a declaration of the dalloc() and dfree() procedures.
 Then, in a file test.c write a main() procedure makes some call to dalloc()
 and dfree() - does it work?
@@ -291,8 +291,8 @@ in the freelist have the correct previous pointer and that they are all marked
 as free. The size should also be a multiple of ALIGN bytes and not less than
 our minimum.
 You can also traverse all blocks starting from the arena pointer. Each
-block is found using the after() procedure and the bfree and bsize elds
-aft that block should match the elds of the current block. The blocks could
+block is found using the after() procedure and the bfree and bsize fields
+aft that block should match the fields of the current block. The blocks could
 of course be either free or taken (the free blocks should be in the freelist)
 but could come in any order. When we have our merge procedure up and
 running two consecutive blocks can not both be free (if so they should have
@@ -383,7 +383,7 @@ then run a loop where you write to all of these blocks a couple of thousand
 times - is there a dierence in execution time, why?
 If you actually want to implement even larger blocks (I don't think so
 but the idea is relevant for a 32-bit system and is what Doug Lee did in his
-rst implementation) you could do another trick. The idea is that the size
+first implementation) you could do another trick. The idea is that the size
 of the block before need only be known if it is free. If it is free it does not
 use the room allocated for the user data. Assume that we know that there is
 always room for eight bytes of user data, then we can shrink our own header
@@ -403,7 +403,7 @@ using 8 byte user data.
 One slight improvement that you can give a try is to do less work when we
 free a block. In the implementation as I have outlined we always remove a
 block from the freelist if it should be merged with another block. This might
-be avoided and I should not give you the solution since guring out what
+be avoided and I should not give you the solution since figuring out what
 to do is more fun than actually doing the implementation. Take a pen and
 paper and draw what is happening when we free a block and discover that
 the block before it is free.
@@ -415,13 +415,13 @@ first, what would you do then? Try it and see if you can keep the list ordered
 without having to start an insertion from the beginning of the list every time.
 Once you have an ordered list up and running one will of course think
 about selecting the best possible block when a request should be handled.
-The best is probably one that we do not have to split. Implement best-t
+The best is probably one that we do not have to split. Implement best-fit
 and see if the length of the list is reduced or if we make things worse when
-too many small blocks are created. Try worst-t, does it make a dierence?
+too many small blocks are created. Try worst-fit, does it make a dierence?
 If you know what your doing you could keep a circular list of free blocks.
 You would then have a current position which is the next block to consider
 when we're looking for a new block. You do not keep the list ordered in any
-way so the optimized merging described above will work ne. The rst-t
+way so the optimized merging described above will work fine. The first-fit
 approach should now give quite good performance. Note - make sure that
 you don't run around in circles looking for something that will not be found.
 
@@ -444,7 +444,7 @@ Ki bytes.
 The thing we have called the arena is only the consecutive memory that
 we have allocated and the freelist pointer has been treated as a global variable. What if we say that an arena is a data structure that holds: a memory
 segment divided into blocks and a freelist pointer. Each block now needs to
-have identier of the arena to whom it belongs.
+have identifier of the arena to whom it belongs.
 We could encode things in as few bits as possible but we now focus on
 how to make things work. Add another field to the header which is a pointer
 to an arena structure. This means that when we free a block we know which
