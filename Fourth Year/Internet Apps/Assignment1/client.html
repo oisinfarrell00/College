@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<title>Internet Apps</title>
+</head>
+<body>
+<div id="app">
+    <h1>Enter a city: </h1>
+    <div>
+        <input v-model="city"/>
+        <button v-on:click="callServer()" >search</button>
+    </div>
+    <div v-show="display()">
+        <p>{{rain ? "Pack an umberella - it will rain":"Leave the umbrella at home!"}}</p>
+        <p>{{tempRange}}</p>
+        <p>{{airQuality ? "You will need a mask":"Air quality is good, no need for a mask"}}</p>
+
+        <table>
+            <tr>
+                <!--<th>Date</th> NO matter what I tried "dt was always undefined"-->
+                <th>Temp</th>
+                <th>Wind speed</th>
+                <th>rain level</th>
+            </tr>
+            <tr v-for="day in weather">
+                <td>{{(day["temp"]["day"]-273.15).toFixed(2)}} *C</td>
+                <td>{{day["wind_speed"]}} m/s</td>
+                <td>{{day["rain"] ? day["rain"] : 0}} mm</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app", 
+        data: {
+            city: "",
+            airQuality: null,
+            rain: null, 
+            tempRange: null,
+            weather: [],
+            showRecords: false
+        },
+        methods: {
+            display: function(){
+                return this.showRecords;
+            },
+            callServer: async function(){
+                if(this.city==""){
+                    alert("Please enter a city")
+                }else{
+                    let baseUrl = "http://localhost:3000/test?city="
+                    try {
+                        let url = baseUrl+this.city;
+                        let response = await fetch(url)
+                        if(response.status==200){
+                            //console.log(response.json())
+                            let data = await response.json()
+                            console.log(data)
+                            this.airQuality = data["airQuality"]
+                            this.rain = data["rain"]
+                            this.tempRange = data["tempRange"]
+                            this.weather = data["weather"].slice(0, 6)
+                            console.log(this.weather[0]["dt"])
+                            this.weather.forEach(element => {
+                                console.log(element["dt"]);
+                            });
+                            //console.log(typeof(this.weather))
+                            this.showRecords=true;
+                            
+                        }else{
+                            alert("Something went wrong sorry");
+                        }
+                        
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
