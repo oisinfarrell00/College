@@ -25,3 +25,10 @@
 - Internetworking
 - INtroduction to computer Security
 - Developing Mobile Applications
+### Fifth Year Modules
+- Data Visualisation
+- Knowledge and Data Engineering
+- Urban Computing
+- Research and Innovation Methods
+- Entrepreneurship & High Tech Venture Creation
+- Internet of Things
