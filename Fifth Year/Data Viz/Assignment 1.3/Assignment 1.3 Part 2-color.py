@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.lines import Line2D
 
-data = pd.read_csv('U:\\Fifth-Year\\Assignment 1.3\\gapminder.csv')
+data = pd.read_csv('U:\\Fifth-Year\\Data Viz\\Assignment 1.3\\gapminder.csv')
 
 population = data["pop"]
 gdpPercap = data["gdpPercap"]

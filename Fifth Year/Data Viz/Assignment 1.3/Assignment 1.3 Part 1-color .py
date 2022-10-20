@@ -7,7 +7,7 @@ from matplotlib.patches import Patch
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('U:\\Fifth-Year\\Assignment 1.3\\gapminder.csv')
+data = pd.read_csv('U:\\Fifth-Year\\Data Viz\\Assignment 1.3\\gapminder.csv')
 
 countries = data["country"]
 continents = data["continent"]
