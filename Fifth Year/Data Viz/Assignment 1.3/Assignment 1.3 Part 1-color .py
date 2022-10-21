@@ -1,19 +1,12 @@
-from cProfile import label
-from random import randrange
 import random
-from matplotlib import markers
 from matplotlib.lines import Line2D
-from matplotlib.patches import Patch
 import pandas as pd
 import matplotlib.pyplot as plt
 
 data = pd.read_csv('U:\\Fifth-Year\\Data Viz\\Assignment 1.3\\gapminder.csv')
 
-countries = data["country"]
 continents = data["continent"]
 years = data["year"]
-population = data["pop"]
-gdpPercap = data["gdpPercap"]
 life_expectencies = data["lifeExp"]
 
 colors = []
