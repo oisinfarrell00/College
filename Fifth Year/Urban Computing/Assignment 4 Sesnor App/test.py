@@ -20,7 +20,7 @@ root = Tk()
 xs = []
 ys = []
 lbl = Label(root, font=('calibri', 40, 'bold'),
-            background='purple',
+            background='#55A4C8',
             foreground='white')
 
 # AWS ACCESSING DB
@@ -36,6 +36,8 @@ ax = fig.add_subplot(221)
 ax.set_facecolor(BACKGROUND)
 ax_pi = fig.add_subplot(222)
 ax_pi.set_facecolor(BACKGROUND)
+ax_bar = fig.add_subplot(223)
+ax_bar.set_facecolor(BACKGROUND)
 
 
 def set_graph():
@@ -106,10 +108,19 @@ def plotter(graph):
 
         ax_pi.clear()
         sizes = [cost_of_electricity, 70, 45, 10]
-        labels = 'Bathroom Light', 'Fridge Light', 'Sitting Room', 'Logs'
+        labels = 'Bathroom Light', 'Fridge Light', 'Sitting Room', 'Bedrooms'
         ax_pi.pie(sizes, labels=labels, autopct='%1.1f%%',
                   shadow=True, startangle=90)
         ax_pi.set_title("Breakdown of all lights")
+
+        ax_bar.clear()
+        bar_width = [cost_of_electricity, 20, 30]
+        bar_y = [10, 20, 30]
+        labels = ["Electricity", "Water", "GAS"]
+        ax_bar.set_yticks(bar_y, labels=labels)
+        ax_bar.set_title("Daily Usage Limits", fontsize=8)
+        ax_bar.barh(bar_y, bar_width, height=4)
+        ax_bar.vlines(60, 0, 30, color='red', label='Daily Price Limit')
 
         graph.draw()
         t.sleep(1)
