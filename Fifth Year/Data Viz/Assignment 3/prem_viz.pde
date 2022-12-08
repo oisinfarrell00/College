@@ -1,3 +1,9 @@
+// TO DO: 
+// - Sort scalling in left bottom quadrant.
+// - Add button and perhas do by game etc for top left 
+// - Add animation and graph to left top
+// - Add entire left bottom
+
 // Images
 PImage soccerBall;
 
@@ -11,6 +17,13 @@ int[] playerAssists;
 int[] matchesPlayed;
 int[] minsPlayed;
 String[] playerNames;
+String[] matchDates;
+String[] homeTeam;
+String[] awayTeam;
+String[] result;
+HashMap<String, int[]> teamTableStats;
+HashMap<String, int[]> tempTable;
+
 
 // Paddings, helper, scalers
 int padding = 15;
@@ -31,6 +44,8 @@ final int YELLOW_CARD_INDEX = 0;
 final int RED_CARD_INDEX = 1;
 final color BUTTON_COLOR = #C0C0C0;
 final color HOVER_COLOR = #808080;
+final color PLAY_BUTTON = #FF0000;
+final color PLAY_HOVER = #A30000;
 final String GAME = "GAME";
 final String MIN = "MIN";
 final String TOTAL = "TOTAL";
@@ -38,6 +53,17 @@ final float MAX_YCARDS_PER_MIN = 0.12535983;
 final float MIN_YCARDS_PER_MIN = 0.0;
 final int MAX_YCARDS_PER_GAME = 6;
 final int MIN_YCARDS_PER_GAME = 0;
+final int POS_INDEX = 0;
+final int PLAYED_INDEX = 1;
+final int WON_INDEX = 2;
+final int DREW_INDEX = 3;
+final int LOST_INDEX = 4;
+final int GF_INDEX = 5;
+final int GA_INDEX = 6;
+final int GD_INDEX = 7;
+final int POINTS_INDEX = 8;
+final int TABLE = 1;
+final int GRAPH = -1;
 
 // Objects
 
@@ -85,6 +111,23 @@ color perTotalButtonColor;
 color perMinButtonColor;
 color perGameButtonColor;
 String disipleSelected;
+int vizType;
+int tableGraphButtonX;
+int tableGraphButtonY;
+int tableGraphButtonWidth;
+int tableGraphButtonHeight;
+boolean overTableGraphButton;
+int playButtonX;
+int playButtonY;
+int playButtonDiameter;
+boolean overPlayButton;
+boolean play;
+color playButtonColor;
+int interval = 100;
+int lastRecordedTime = 0;
+boolean pause = false;
+int resultIndex;
+
 
 // Functions
 int[] getDataInt(String tableName, String columnName){
@@ -123,6 +166,16 @@ float convert(float oldVal, float oldMax, float oldMin, float newMax, float newM
 
 boolean overButton(int x, int y, int width, int height){
   return (mouseX >= x && mouseX <= x+width && mouseY >= y && mouseY <= y+height);
+}
+
+boolean overCircleButton(int x, int y, int diameter) {
+  float disX = x - mouseX;
+  float disY = y - mouseY;
+  if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 void update(){
@@ -167,6 +220,20 @@ void update(){
       perMinButtonColor = BUTTON_COLOR;
     }
   }
+
+  if(overButton(tableGraphButtonX, tableGraphButtonY, tableGraphButtonWidth, tableGraphButtonHeight)){
+    overTableGraphButton = true;
+  }else{
+    overTableGraphButton = false;
+  }
+
+  if(overCircleButton(playButtonX, playButtonY, playButtonDiameter)){
+    overPlayButton = true;
+    playButtonColor = PLAY_HOVER;
+  }else{
+    overPlayButton = false;
+    playButtonColor = PLAY_BUTTON;
+  }
 }
 
 void mousePressed(){
@@ -189,6 +256,14 @@ void mousePressed(){
   if(overTotalButton){
     disipleSelected = TOTAL;
   }
+
+  if(overTableGraphButton){
+    vizType*=-1;
+  }
+
+  if(overPlayButton){
+    play = true;
+  }
 }
 
 void updateArray(float[][] array, int row, int col, float increment){
@@ -206,12 +281,162 @@ void numberAxis(float maxVal, float minVal, float axisMax, float axisMin, float 
     }else{
       text(i, xPos-5, yPos+i*step);
     }
-    
   }
+}
+
+void plotCardData(float[][] cardData, float max, float min, int yMax, int yMin){
+  for(int index = 0; index<cardData.length; index++){
+    int step = (xMax-xMin)/(MAX_AGE-MIN_AGE);
+    float barYellowY = convert(cardData[index][YELLOW_CARD_INDEX],  max, min, yMax, yMin);
+    float barRedY = convert(cardData[index][RED_CARD_INDEX],  max, min, yMax, yMin);
+    fill(#FFFF00);
+    strokeWeight(3);
+    rect(xMin+(index)*step, barYellowY, step/3, yMin-barYellowY);
+    fill(#FF0000);
+    rect(xMin+(index)*(step)+step/3, barRedY, step/3, yMin-barRedY);  
+  }
+}
+
+void drawTable(HashMap<String, int[]> tableData){
+  int tableX = width/2+2*padding;
+  int tableY = 4*padding;
+  int tableWidth = width/4-4*padding;
+  int tableHeight = height/2-6*padding;
+  int headerHeight = 20;
+
+  fill(#C0C0C0);
+  stroke(0);
+  fill(#5A5A5A);
+  rect(tableX, tableY-headerHeight, tableWidth, headerHeight);
+  for(String team : tableData.keySet()){
+    int[] stats = tableData.get(team);
+    int pos = stats[POS_INDEX];
+    int played = stats[PLAYED_INDEX];
+    int won = stats[WON_INDEX];
+    int drew = stats[DREW_INDEX];
+    int lost = stats[LOST_INDEX];
+    int goalsFor = stats[GF_INDEX];
+    int goalsAgainst = stats[GA_INDEX];
+    int goalDiff = stats[GD_INDEX];
+    int points = stats[POINTS_INDEX];
+
+    strokeWeight(2);
+    fill(#C0C0C0);
+    float rowHeight = tableHeight/tableData.size();
+    rect(tableX, tableY+(pos-1)*rowHeight, tableWidth, rowHeight);
+    fill(0);
+    textSize(15);
+    textAlign(RIGHT);
+    text(pos, tableX+17, tableY+(pos-1)*rowHeight+15);
+    textAlign(LEFT);
+    text(team, tableX+37, tableY+(pos-1)*rowHeight+15);
+    textAlign(CENTER);
+    int statsX = tableX+220;
+    int spacing = 26;
+    text(played, statsX, tableY+(pos-1)*rowHeight+15);
+    text(won, statsX+spacing, tableY+(pos-1)*rowHeight+15);
+    text(drew, statsX+2*spacing, tableY+(pos-1)*rowHeight+15);
+    text(lost, statsX+3*spacing, tableY+(pos-1)*rowHeight+15);
+    text(goalsFor, statsX+4*spacing, tableY+(pos-1)*rowHeight+15);
+    text(goalsAgainst, statsX+5*spacing, tableY+(pos-1)*rowHeight+15);
+    text(goalDiff, statsX+6*spacing, tableY+(pos-1)*rowHeight+15);
+    text(points, statsX+7*spacing, tableY+(pos-1)*rowHeight+15);
+  }
+}
+
+void showResults(){
+  textSize(45);
+    textAlign(LEFT);
+    text("RESULTS", 6*width/8, 5*padding);
+    line(6*width/8, 5*padding+5, 6*width/8+170, 5*padding+5);
+    
+    // Iterate if timer ticks
+    if (millis()-lastRecordedTime>interval) {
+      if (!pause) {
+        iteration();
+        lastRecordedTime = millis();
+      }
+    }
+}
+
+void updateTable(HashMap<String, int[]> tableData, String homeTeam, String result, String awayTeam){
+  int[] homeTeamStats = tableData.get(homeTeam);
+  int[] awayTeamStats = tableData.get(awayTeam);
+  String[] goals = split(result, ':');
+  int homeTeamGoals = Integer.valueOf(goals[0]);
+  int awayTeamGoals = Integer.valueOf(goals[1]);
+
+  if(homeTeamGoals>awayTeamGoals){
+    homeTeamStats[POINTS_INDEX]+=3;
+    homeTeamStats[WON_INDEX]+=1;
+    awayTeamStats[LOST_INDEX]+=1;
+  }else if(homeTeamGoals<awayTeamGoals){
+    awayTeamStats[POINTS_INDEX]+=3;
+    awayTeamStats[WON_INDEX]+=1;
+    homeTeamStats[LOST_INDEX]+=1;
+  }else{
+    homeTeamStats[POINTS_INDEX]+=1;
+    awayTeamStats[POINTS_INDEX]+=1;
+    homeTeamStats[DREW_INDEX]+=1;
+    awayTeamStats[DREW_INDEX]+=1;
+  }
+
+  homeTeamStats[PLAYED_INDEX]+=1;
+  awayTeamStats[PLAYED_INDEX]+=1;
+  homeTeamStats[GF_INDEX]+=homeTeamGoals;
+  awayTeamStats[GF_INDEX]+=awayTeamGoals;
+  homeTeamStats[GA_INDEX]+=awayTeamGoals;
+  awayTeamStats[GA_INDEX]+=homeTeamGoals;
+  homeTeamStats[GD_INDEX]+=(homeTeamGoals-awayTeamGoals);
+  awayTeamStats[GD_INDEX]+=(awayTeamGoals-homeTeamGoals);
+
+  reorderTable(tableData);
+
+}
+
+void reorderTable(HashMap<String, int[]> tableData){
+  HashMap<String, int[]> temp = new HashMap<String, int[]>();
+  ArrayList<String> teamsList = new ArrayList<String>();
+  for(String team : tableData.keySet()){
+    teamsList.add(team);
+  }
+  
+  
+  for(int posForGrabs = 1; posForGrabs<=20; posForGrabs++){
+    int maxPoints = 0;
+    String topTeam = "";
+    for(String team : teamsList){
+      if(tableData.get(team)[POINTS_INDEX]>=maxPoints){
+        maxPoints = tableData.get(team)[POINTS_INDEX];
+        topTeam = team;
+
+      }
+    }
+    int[] topTeamStats = tableData.get(topTeam);
+    topTeamStats[POS_INDEX] = posForGrabs;
+    temp.put(topTeam, topTeamStats);
+    teamsList.remove(topTeam);
+  }
+
+}
+
+void iteration(){
+  updateTable(tempTable, homeTeam[resultIndex], result[resultIndex], awayTeam[resultIndex]);
+  drawTable(tempTable);
+  textSize(35);
+  textAlign(LEFT);
+  text("Match Date: "+matchDates[resultIndex], 6*width/8, padding*8);
+  textSize(25);
+  text("HOME TEAM   RESULT   AWAY TEAM", 6*width/8, padding*10);
+  textSize(20);
+  text(homeTeam[resultIndex] +" "+ result[resultIndex] +" "+ awayTeam[resultIndex], 6*width/8, padding*12);
+  resultIndex++;
 }
 
 void setup(){
   size(1900,970);
+  frameRate(10);
+  ellipseMode(CENTER); 
   soccerBall = loadImage("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\soccerball.jpg");
   
   playerAges = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Age");
@@ -222,6 +447,35 @@ void setup(){
   playerNames = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Player");
   matchesPlayed = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "MP");
   minsPlayed = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Min");
+
+  String[] teams = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Team");
+  int[] pos = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Pos");
+  int[] played = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Pld");
+  int[] won = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "W");
+  int[] drew = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "D");
+  int[] lost = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "L");
+  int[] goalDiff = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "GD");
+  int[] goalsFor = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "GF");
+  int[] goalsAgainst = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "GA");
+  int[] points = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Pts");
+
+  matchDates = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\premier_league_match_results.csv", "Date");
+  homeTeam = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\premier_league_match_results.csv", "HomeTeam");
+  awayTeam = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\premier_league_match_results.csv", "AwayTeam");
+  result = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\premier_league_match_results.csv", "Result");
+
+  teamTableStats = new HashMap<String, int[]>();
+  for(int index=0; index<teams.length; index++){
+    int[] finalStats = {pos[index], played[index], won[index], drew[index], lost[index], goalsFor[index], goalsAgainst[index], goalDiff[index], points[index]};
+    teamTableStats.put(teams[index], finalStats);
+  }
+
+  String[] startingOrder = sort(teams);
+  tempTable = new HashMap<String, int[]>();
+  for(int index = 0; index<startingOrder.length; index++){
+    int[] initialStats = {index+1,0,0,0,0,0,0,0,0};
+    tempTable.put(startingOrder[index], initialStats);
+  }
 
   xMin = 4*padding;
   xMax = width/2-8*padding;
@@ -267,7 +521,24 @@ void setup(){
   perGameButtonColor = perMinButtonColor = #C0C0C0;
   perTotalButtonColor = #808080;
 
-  disipleSelected = "TOTAL";
+  disipleSelected = TOTAL;
+
+  vizType = TABLE;
+
+  tableGraphButtonX = width-8*padding;
+  tableGraphButtonY = 2*padding;
+  tableGraphButtonWidth = 70;
+  tableGraphButtonHeight = 30;
+  playButtonDiameter = 50;
+  playButtonX = tableGraphButtonX+tableGraphButtonWidth/2;
+  playButtonY = tableGraphButtonY+tableGraphButtonHeight+playButtonDiameter/2+padding;
+  
+  overTableGraphButton = false;
+  playButtonColor = PLAY_BUTTON;
+  overPlayButton = false;
+  play = false;
+
+  resultIndex = 0;
 
 }
 
@@ -287,6 +558,7 @@ void draw(){
   // Top left quadrant: Goals and assist per player.//
   ////////////////////////////////////////////////////
   fill(255);
+  strokeWeight(3);
   rect(padding, padding, width/2-2*padding, height/2-2*padding);
   fill(0);
   
@@ -375,8 +647,13 @@ void draw(){
   //////////////////////////////////////
   fill(255);
   stroke(#35ca52);
+  strokeWeight(3);
   rect(padding, height/2+padding, width/2-2*padding, height/2-2*padding);
   fill(0);
+  textSize(30);
+  text("Yellow/Red Cards per Age by "+disipleSelected, width/9, height/2+3*padding);
+  textSize(20);
+  text("Age", width/5, height-2*padding);
   
   int yMin2 = height-4*padding;
   int yMax2 = height/2+4*padding;
@@ -405,17 +682,17 @@ void draw(){
   fill(0);
   text("PER GAME", perGameBoxX + 50, perGameBoxY + 15);
 
+  // Plotting legend 
+  strokeWeight(3);
+  fill(#FFFF00);
+  rect(perGameBoxX, perGameBoxY+60, 15, 15);
+  fill(#FF0000);
+  rect(perGameBoxX, perGameBoxY+80, 15, 15);
+  fill(0);
+  text(" - Yellow Cards", perGameBoxX+20, perGameBoxY+75);
+  text(" - Red Cards", perGameBoxX+20, perGameBoxY+95);
 
   // Numbering axes
-  if(disipleSelected==TOTAL){
-    numberAxis(MAX_YCARDS_BY_AGE, MIN_YCARDS_BY_AGE, yMax2, yMin2, xMin, yMin2, 12);
-  }else if(disipleSelected==GAME){
-    numberAxis(MAX_YCARDS_PER_GAME, MIN_YCARDS_PER_GAME, yMax2, yMin2, xMin, yMin2, 1);
-  }else{
-    numberAxis(MAX_YCARDS_PER_MIN, MIN_YCARDS_PER_MIN, yMax2, yMin2, xMin, yMin2, 0.01);
-  }
-  
-
   for(int i = MIN_AGE; i<=MAX_AGE; i++){
     int step = (xMax-xMin)/(MAX_AGE-MIN_AGE);
     fill(0);
@@ -424,6 +701,7 @@ void draw(){
     text(i, xMin+(i-MIN_AGE)*step+3, yMin2+15);
   }
   
+  // Collecting data (Could possibly be redone if time)
   float[][] totalCardsByAge = new float[MAX_AGE-MIN_AGE+1][2];
   float[][] cardsPerMinByAge = new float[MAX_AGE-MIN_AGE+1][2];
   float[][] cardsPerGameByAge = new float[MAX_AGE-MIN_AGE+1][2];
@@ -444,43 +722,51 @@ void draw(){
 
   // Plotting data 
   if(disipleSelected==TOTAL){
-    for(int index = 0; index<totalCardsByAge.length; index++){
-      int step = (xMax-xMin)/(MAX_AGE-MIN_AGE);
-      float barYellowY = convert(totalCardsByAge[index][YELLOW_CARD_INDEX],  MAX_YCARDS_BY_AGE, MIN_YCARDS_BY_AGE, yMax2, yMin2);
-      float barRedY = convert(totalCardsByAge[index][RED_CARD_INDEX],  MAX_YCARDS_BY_AGE, MIN_YCARDS_BY_AGE, yMax2, yMin2);
-      fill(#FFFF00);
-      strokeWeight(3);
-      rect(xMin+(index)*step, barYellowY, step/3, yMin2-barYellowY);
-      fill(#FF0000);
-      rect(xMin+(index)*(step)+step/3, barRedY, step/3, yMin2-barRedY);  
-    }
+    numberAxis(MAX_YCARDS_BY_AGE, MIN_YCARDS_BY_AGE, yMax2, yMin2, xMin, yMin2, 12);
+    plotCardData(totalCardsByAge, MAX_YCARDS_BY_AGE, MIN_YCARDS_BY_AGE, yMax2, yMin2);
   }else if(disipleSelected==MIN){
-    for(int index = 0; index<cardsPerMinByAge.length; index++){
-      int step = (xMax-xMin)/(MAX_AGE-MIN_AGE);
-      float barYellowY = convert(cardsPerMinByAge[index][YELLOW_CARD_INDEX],  MAX_YCARDS_PER_MIN, MIN_YCARDS_PER_MIN, yMax2, yMin2);
-      float barRedY = convert(cardsPerMinByAge[index][RED_CARD_INDEX],  MAX_YCARDS_PER_MIN, MIN_YCARDS_PER_MIN, yMax2, yMin2);
-      fill(#FFFF00);
-      strokeWeight(3);
-      rect(xMin+(index)*step, barYellowY, step/3, yMin2-barYellowY);
-      fill(#FF0000);
-      rect(xMin+(index)*(step)+step/3, barRedY, step/3, yMin2-barRedY);  
-    }
+    numberAxis(MAX_YCARDS_PER_MIN, MIN_YCARDS_PER_MIN, yMax2, yMin2, xMin, yMin2, 0.01);
+    plotCardData(cardsPerMinByAge, MAX_YCARDS_PER_MIN, MIN_YCARDS_PER_MIN, yMax2, yMin2);
   }else{
-    for(int index = 0; index<cardsPerGameByAge.length; index++){
-      int step = (xMax-xMin)/(MAX_AGE-MIN_AGE);
-      float barYellowY = convert(cardsPerGameByAge[index][YELLOW_CARD_INDEX],  MAX_YCARDS_PER_GAME, MIN_YCARDS_PER_GAME, yMax2, yMin2);
-      float barRedY = convert(cardsPerGameByAge[index][RED_CARD_INDEX],  MAX_YCARDS_PER_GAME, MIN_YCARDS_PER_GAME, yMax2, yMin2);
-      println(index+MIN_AGE+": "+cardsPerGameByAge[index][YELLOW_CARD_INDEX]);
-      fill(#FFFF00);
-      strokeWeight(3);
-      rect(xMin+(index)*step, barYellowY, step/3, yMin2-barYellowY);
-      fill(#FF0000);
-      rect(xMin+(index)*(step)+step/3, barRedY, step/3, yMin2-barRedY);  
-    }
+    numberAxis(MAX_YCARDS_PER_GAME, MIN_YCARDS_PER_GAME, yMax2, yMin2, xMin, yMin2, 1);
+    plotCardData(cardsPerGameByAge, MAX_YCARDS_PER_GAME, MIN_YCARDS_PER_GAME, yMax2, yMin2);
   }
+
   
 
+  //////////////////////////////////////////////////////
+  // Top Right quadrant: Table and graph of standings.//
+  //////////////////////////////////////////////////////
+  fill(255);
+  stroke(#35ca52);
+  strokeWeight(3);
+  rect(width/2+padding, padding, width/2-2*padding, height/2-2*padding);
 
+  // Adding button
+  fill(BUTTON_COLOR);
+  stroke(0);
+  strokeWeight(2);
+  rect(tableGraphButtonX, tableGraphButtonY, tableGraphButtonWidth, tableGraphButtonHeight);
+  fill(HOVER_COLOR);
+  stroke(0);
+  strokeWeight(1);
+  int sliderX = (vizType == TABLE ? width-8*padding : width-8*padding+tableGraphButtonWidth/2);
+  rect(sliderX, tableGraphButtonY, tableGraphButtonWidth/2, tableGraphButtonHeight);
+  fill(playButtonColor); 
+  ellipse(playButtonX, playButtonY, playButtonDiameter, playButtonDiameter);
+  fill(HOVER_COLOR);
+  triangle(playButtonX+playButtonDiameter/3, playButtonY, playButtonX-playButtonDiameter/4, playButtonY+playButtonDiameter/4, playButtonX-playButtonDiameter/4, playButtonY-playButtonDiameter/4);
+
+  // Adding table
+  if(vizType==TABLE){
+    drawTable(teamTableStats);
+    if(play && resultIndex<380){
+      drawTable(tempTable);
+      showResults();
+    }
+  }else{
+
+  }
   
   
 }
