@@ -1,0 +1,381 @@
+Date,HomeTeam,Result,AwayTeam
+13-Aug-21,Brentford,02:00,Arsenal
+14-Aug-21,Burnley,01:02,Brighton and Hove Albion
+14-Aug-21,Chelsea,03:00,Crystal Palace
+14-Aug-21,Everton,03:01,Southampton
+14-Aug-21,Leicester City,01:00,Wolverhampton Wanderers
+14-Aug-21,Manchester United,05:01,Leeds United
+14-Aug-21,Norwich City,00:03,Liverpool
+14-Aug-21,Watford,03:02,Aston Villa
+15-Aug-21,Newcastle United,02:04,West Ham United
+15-Aug-21,Tottenham Hotspur,01:00,Manchester City
+21-Aug-21,Aston Villa,02:00,Newcastle United
+21-Aug-21,Brighton and Hove Albion,02:00,Watford
+21-Aug-21,Crystal Palace,00:00,Brentford
+21-Aug-21,Leeds United,02:02,Everton
+21-Aug-21,Liverpool,02:00,Burnley
+21-Aug-21,Manchester City,05:00,Norwich City
+22-Aug-21,Arsenal,00:02,Chelsea
+22-Aug-21,Southampton,01:01,Manchester United
+22-Aug-21,Wolverhampton Wanderers,00:01,Tottenham Hotspur
+23-Aug-21,West Ham United,04:01,Leicester City
+28-Aug-21,Aston Villa,01:01,Brentford
+28-Aug-21,Brighton and Hove Albion,00:02,Everton
+28-Aug-21,Liverpool,01:01,Chelsea
+28-Aug-21,Manchester City,05:00,Arsenal
+28-Aug-21,Newcastle United,02:02,Southampton
+28-Aug-21,Norwich City,01:02,Leicester City
+28-Aug-21,West Ham United,02:02,Crystal Palace
+29-Aug-21,Burnley,01:01,Leeds United
+29-Aug-21,Tottenham Hotspur,01:00,Watford
+29-Aug-21,Wolverhampton Wanderers,00:01,Manchester United
+11-Sep-21,Arsenal,01:00,Norwich City
+11-Sep-21,Brentford,00:01,Brighton and Hove Albion
+11-Sep-21,Chelsea,03:00,Aston Villa
+11-Sep-21,Crystal Palace,03:00,Tottenham Hotspur
+11-Sep-21,Leicester City,00:01,Manchester City
+11-Sep-21,Manchester United,04:01,Newcastle United
+11-Sep-21,Southampton,00:00,West Ham United
+11-Sep-21,Watford,00:02,Wolverhampton Wanderers
+12-Sep-21,Leeds United,00:03,Liverpool
+13-Sep-21,Everton,03:01,Burnley
+17-Sep-21,Newcastle United,01:01,Leeds United
+18-Sep-21,Aston Villa,03:00,Everton
+18-Sep-21,Burnley,00:01,Arsenal
+18-Sep-21,Liverpool,03:00,Crystal Palace
+18-Sep-21,Manchester City,00:00,Southampton
+18-Sep-21,Norwich City,01:03,Watford
+18-Sep-21,Wolverhampton Wanderers,00:02,Brentford
+19-Sep-21,Brighton and Hove Albion,02:01,Leicester City
+19-Sep-21,Tottenham Hotspur,00:03,Chelsea
+19-Sep-21,West Ham United,01:02,Manchester United
+25-Sep-21,Brentford,03:03,Liverpool
+25-Sep-21,Chelsea,00:01,Manchester City
+25-Sep-21,Everton,02:00,Norwich City
+25-Sep-21,Leeds United,01:02,West Ham United
+25-Sep-21,Leicester City,02:02,Burnley
+25-Sep-21,Manchester United,00:01,Aston Villa
+25-Sep-21,Watford,01:01,Newcastle United
+26-Sep-21,Arsenal,03:01,Tottenham Hotspur
+26-Sep-21,Southampton,00:01,Wolverhampton Wanderers
+27-Sep-21,Crystal Palace,01:01,Brighton and Hove Albion
+02-Oct-21,Brighton and Hove Albion,00:00,Arsenal
+02-Oct-21,Burnley,00:00,Norwich City
+02-Oct-21,Chelsea,03:01,Southampton
+02-Oct-21,Leeds United,01:00,Watford
+02-Oct-21,Manchester United,01:01,Everton
+02-Oct-21,Wolverhampton Wanderers,02:01,Newcastle United
+03-Oct-21,Crystal Palace,02:02,Leicester City
+03-Oct-21,Liverpool,02:02,Manchester City
+03-Oct-21,Tottenham Hotspur,02:01,Aston Villa
+03-Oct-21,West Ham United,01:02,Brentford
+16-Oct-21,Aston Villa,02:03,Wolverhampton Wanderers
+16-Oct-21,Brentford,00:01,Chelsea
+16-Oct-21,Leicester City,04:02,Manchester United
+16-Oct-21,Manchester City,02:00,Burnley
+16-Oct-21,Norwich City,00:00,Brighton and Hove Albion
+16-Oct-21,Southampton,01:00,Leeds United
+16-Oct-21,Watford,00:05,Liverpool
+17-Oct-21,Everton,00:01,West Ham United
+17-Oct-21,Newcastle United,02:03,Tottenham Hotspur
+18-Oct-21,Arsenal,02:02,Crystal Palace
+22-Oct-21,Arsenal,03:01,Aston Villa
+23-Oct-21,Brighton and Hove Albion,01:04,Manchester City
+23-Oct-21,Chelsea,07:00,Norwich City
+23-Oct-21,Crystal Palace,01:01,Newcastle United
+23-Oct-21,Everton,02:05,Watford
+23-Oct-21,Leeds United,01:01,Wolverhampton Wanderers
+23-Oct-21,Southampton,02:02,Burnley
+24-Oct-21,Brentford,01:02,Leicester City
+24-Oct-21,Manchester United,00:05,Liverpool
+24-Oct-21,West Ham United,01:00,Tottenham Hotspur
+30-Oct-21,Burnley,03:01,Brentford
+30-Oct-21,Leicester City,00:02,Arsenal
+30-Oct-21,Liverpool,02:02,Brighton and Hove Albion
+30-Oct-21,Manchester City,00:02,Crystal Palace
+30-Oct-21,Newcastle United,00:03,Chelsea
+30-Oct-21,Tottenham Hotspur,00:03,Manchester United
+30-Oct-21,Watford,00:01,Southampton
+31-Oct-21,Aston Villa,01:04,West Ham United
+31-Oct-21,Norwich City,01:02,Leeds United
+01-Nov-21,Wolverhampton Wanderers,02:01,Everton
+05-Nov-21,Southampton,01:00,Aston Villa
+06-Nov-21,Brentford,01:02,Norwich City
+06-Nov-21,Brighton and Hove Albion,01:01,Newcastle United
+06-Nov-21,Chelsea,01:01,Burnley
+06-Nov-21,Crystal Palace,02:00,Wolverhampton Wanderers
+06-Nov-21,Manchester United,00:02,Manchester City
+07-Nov-21,Arsenal,01:00,Watford
+07-Nov-21,Everton,00:00,Tottenham Hotspur
+07-Nov-21,Leeds United,01:01,Leicester City
+07-Nov-21,West Ham United,03:02,Liverpool
+20-Nov-21,Aston Villa,02:00,Brighton and Hove Albion
+20-Nov-21,Burnley,03:03,Crystal Palace
+20-Nov-21,Leicester City,00:03,Chelsea
+20-Nov-21,Liverpool,04:00,Arsenal
+20-Nov-21,Newcastle United,03:03,Brentford
+20-Nov-21,Norwich City,02:01,Southampton
+20-Nov-21,Watford,04:01,Manchester United
+20-Nov-21,Wolverhampton Wanderers,01:00,West Ham United
+21-Nov-21,Manchester City,03:00,Everton
+21-Nov-21,Tottenham Hotspur,02:01,Leeds United
+27-Nov-21,Arsenal,02:00,Newcastle United
+27-Nov-21,Brighton and Hove Albion,00:00,Leeds United
+27-Nov-21,Crystal Palace,01:02,Aston Villa
+27-Nov-21,Liverpool,04:00,Southampton
+27-Nov-21,Norwich City,00:00,Wolverhampton Wanderers
+28-Nov-21,Brentford,01:00,Everton
+28-Nov-21,Chelsea,01:01,Manchester United
+28-Nov-21,Leicester City,04:02,Watford
+28-Nov-21,Manchester City,02:01,West Ham United
+30-Nov-21,Leeds United,01:00,Crystal Palace
+30-Nov-21,Newcastle United,01:01,Norwich City
+01-Dec-21,Aston Villa,01:02,Manchester City
+01-Dec-21,Everton,01:04,Liverpool
+01-Dec-21,Southampton,02:02,Leicester City
+01-Dec-21,Watford,01:02,Chelsea
+01-Dec-21,West Ham United,01:01,Brighton and Hove Albion
+01-Dec-21,Wolverhampton Wanderers,00:00,Burnley
+02-Dec-21,Manchester United,03:02,Arsenal
+02-Dec-21,Tottenham Hotspur,02:00,Brentford
+04-Dec-21,Newcastle United,01:00,Burnley
+04-Dec-21,Southampton,01:01,Brighton and Hove Albion
+04-Dec-21,Watford,01:03,Manchester City
+04-Dec-21,West Ham United,03:02,Chelsea
+04-Dec-21,Wolverhampton Wanderers,00:01,Liverpool
+05-Dec-21,Aston Villa,02:01,Leicester City
+05-Dec-21,Leeds United,02:02,Brentford
+05-Dec-21,Manchester United,01:00,Crystal Palace
+05-Dec-21,Tottenham Hotspur,03:00,Norwich City
+06-Dec-21,Everton,02:01,Arsenal
+10-Dec-21,Brentford,02:01,Watford
+11-Dec-21,Arsenal,03:00,Southampton
+11-Dec-21,Chelsea,03:02,Leeds United
+11-Dec-21,Liverpool,01:00,Aston Villa
+11-Dec-21,Manchester City,01:00,Wolverhampton Wanderers
+11-Dec-21,Norwich City,00:01,Manchester United
+12-Dec-21,Burnley,00:00,West Ham United
+12-Dec-21,Crystal Palace,03:01,Everton
+12-Dec-21,Leicester City,04:00,Newcastle United
+14-Dec-21,Manchester City,07:00,Leeds United
+14-Dec-21,Norwich City,00:02,Aston Villa
+15-Dec-21,Arsenal,02:00,West Ham United
+15-Dec-21,Brighton and Hove Albion,00:01,Wolverhampton Wanderers
+15-Dec-21,Crystal Palace,02:02,Southampton
+16-Dec-21,Chelsea,01:01,Everton
+16-Dec-21,Liverpool,03:01,Newcastle United
+18-Dec-21,Leeds United,01:04,Arsenal
+19-Dec-21,Newcastle United,00:04,Manchester City
+19-Dec-21,Tottenham Hotspur,02:02,Liverpool
+19-Dec-21,Wolverhampton Wanderers,00:00,Chelsea
+26-Dec-21,Aston Villa,01:03,Chelsea
+26-Dec-21,Brighton and Hove Albion,02:00,Brentford
+26-Dec-21,Manchester City,06:03,Leicester City
+26-Dec-21,Norwich City,00:05,Arsenal
+26-Dec-21,Tottenham Hotspur,03:00,Crystal Palace
+26-Dec-21,West Ham United,02:03,Southampton
+27-Dec-21,Newcastle United,01:01,Manchester United
+28-Dec-21,Crystal Palace,03:00,Norwich City
+28-Dec-21,Leicester City,01:00,Liverpool
+28-Dec-21,Southampton,01:01,Tottenham Hotspur
+28-Dec-21,Watford,01:04,West Ham United
+29-Dec-21,Brentford,00:01,Manchester City
+29-Dec-21,Chelsea,01:01,Brighton and Hove Albion
+30-Dec-21,Manchester United,03:01,Burnley
+01-Jan-22,Arsenal,01:02,Manchester City
+01-Jan-22,Crystal Palace,02:03,West Ham United
+01-Jan-22,Watford,00:01,Tottenham Hotspur
+02-Jan-22,Brentford,02:01,Aston Villa
+02-Jan-22,Chelsea,02:02,Liverpool
+02-Jan-22,Everton,02:03,Brighton and Hove Albion
+02-Jan-22,Leeds United,03:01,Burnley
+03-Jan-22,Manchester United,00:01,Wolverhampton Wanderers
+11-Jan-22,Southampton,04:01,Brentford
+12-Jan-22,West Ham United,02:00,Norwich City
+14-Jan-22,Brighton and Hove Albion,01:01,Crystal Palace
+15-Jan-22,Aston Villa,02:02,Manchester United
+15-Jan-22,Manchester City,01:00,Chelsea
+15-Jan-22,Newcastle United,01:01,Watford
+15-Jan-22,Norwich City,02:01,Everton
+15-Jan-22,Wolverhampton Wanderers,03:01,Southampton
+16-Jan-22,Liverpool,03:00,Brentford
+16-Jan-22,West Ham United,02:03,Leeds United
+18-Jan-22,Brighton and Hove Albion,01:01,Chelsea
+19-Jan-22,Brentford,01:03,Manchester United
+19-Jan-22,Leicester City,02:03,Tottenham Hotspur
+21-Jan-22,Watford,00:03,Norwich City
+22-Jan-22,Brentford,01:02,Wolverhampton Wanderers
+22-Jan-22,Everton,00:01,Aston Villa
+22-Jan-22,Leeds United,00:01,Newcastle United
+22-Jan-22,Manchester United,01:00,West Ham United
+22-Jan-22,Southampton,01:01,Manchester City
+23-Jan-22,Arsenal,00:00,Burnley
+23-Jan-22,Chelsea,02:00,Tottenham Hotspur
+23-Jan-22,Crystal Palace,01:03,Liverpool
+23-Jan-22,Leicester City,01:01,Brighton and Hove Albion
+05-Feb-22,Burnley,00:00,Watford
+08-Feb-22,Burnley,01:01,Manchester United
+08-Feb-22,Newcastle United,03:01,Everton
+08-Feb-22,West Ham United,01:00,Watford
+09-Feb-22,Aston Villa,03:03,Leeds United
+09-Feb-22,Manchester City,02:00,Brentford
+09-Feb-22,Norwich City,01:01,Crystal Palace
+09-Feb-22,Tottenham Hotspur,02:03,Southampton
+10-Feb-22,Liverpool,02:00,Leicester City
+10-Feb-22,Wolverhampton Wanderers,00:01,Arsenal
+12-Feb-22,Brentford,00:00,Crystal Palace
+12-Feb-22,Everton,03:00,Leeds United
+12-Feb-22,Manchester United,01:01,Southampton
+12-Feb-22,Norwich City,00:04,Manchester City
+12-Feb-22,Watford,00:02,Brighton and Hove Albion
+13-Feb-22,Burnley,00:01,Liverpool
+13-Feb-22,Leicester City,02:02,West Ham United
+13-Feb-22,Newcastle United,01:00,Aston Villa
+13-Feb-22,Tottenham Hotspur,00:02,Wolverhampton Wanderers
+15-Feb-22,Manchester United,02:00,Brighton and Hove Albion
+19-Feb-22,Arsenal,02:01,Brentford
+19-Feb-22,Aston Villa,00:01,Watford
+19-Feb-22,Brighton and Hove Albion,00:03,Burnley
+19-Feb-22,Crystal Palace,00:01,Chelsea
+19-Feb-22,Liverpool,03:01,Norwich City
+19-Feb-22,Manchester City,02:03,Tottenham Hotspur
+19-Feb-22,Southampton,02:00,Everton
+19-Feb-22,West Ham United,01:01,Newcastle United
+20-Feb-22,Leeds United,02:04,Manchester United
+20-Feb-22,Wolverhampton Wanderers,02:01,Leicester City
+23-Feb-22,Burnley,01:00,Tottenham Hotspur
+23-Feb-22,Liverpool,06:00,Leeds United
+23-Feb-22,Watford,01:04,Crystal Palace
+24-Feb-22,Arsenal,02:01,Wolverhampton Wanderers
+25-Feb-22,Southampton,02:00,Norwich City
+26-Feb-22,Brentford,00:02,Newcastle United
+26-Feb-22,Brighton and Hove Albion,00:02,Aston Villa
+26-Feb-22,Crystal Palace,01:01,Burnley
+26-Feb-22,Everton,00:01,Manchester City
+26-Feb-22,Leeds United,00:04,Tottenham Hotspur
+26-Feb-22,Manchester United,00:00,Watford
+27-Feb-22,West Ham United,01:00,Wolverhampton Wanderers
+01-Mar-22,Burnley,00:02,Leicester City
+05-Mar-22,Aston Villa,04:00,Southampton
+05-Mar-22,Burnley,00:04,Chelsea
+05-Mar-22,Leicester City,01:00,Leeds United
+05-Mar-22,Liverpool,01:00,West Ham United
+05-Mar-22,Newcastle United,02:01,Brighton and Hove Albion
+05-Mar-22,Norwich City,01:03,Brentford
+05-Mar-22,Wolverhampton Wanderers,00:02,Crystal Palace
+06-Mar-22,Manchester City,04:01,Manchester United
+06-Mar-22,Watford,02:03,Arsenal
+07-Mar-22,Tottenham Hotspur,05:00,Everton
+10-Mar-22,Leeds United,00:03,Aston Villa
+10-Mar-22,Norwich City,01:03,Chelsea
+10-Mar-22,Southampton,01:02,Newcastle United
+10-Mar-22,Wolverhampton Wanderers,04:00,Watford
+12-Mar-22,Brentford,02:00,Burnley
+12-Mar-22,Brighton and Hove Albion,00:02,Liverpool
+12-Mar-22,Manchester United,03:02,Tottenham Hotspur
+13-Mar-22,Arsenal,02:00,Leicester City
+13-Mar-22,Chelsea,01:00,Newcastle United
+13-Mar-22,Everton,00:01,Wolverhampton Wanderers
+13-Mar-22,Leeds United,02:01,Norwich City
+13-Mar-22,Southampton,01:02,Watford
+13-Mar-22,West Ham United,02:01,Aston Villa
+14-Mar-22,Crystal Palace,00:00,Manchester City
+16-Mar-22,Arsenal,00:02,Liverpool
+16-Mar-22,Brighton and Hove Albion,00:02,Tottenham Hotspur
+17-Mar-22,Everton,01:00,Newcastle United
+18-Mar-22,Wolverhampton Wanderers,02:03,Leeds United
+19-Mar-22,Aston Villa,00:01,Arsenal
+20-Mar-22,Leicester City,02:01,Brentford
+20-Mar-22,Tottenham Hotspur,03:01,West Ham United
+02-Apr-22,Brighton and Hove Albion,00:00,Norwich City
+02-Apr-22,Burnley,00:02,Manchester City
+02-Apr-22,Chelsea,01:04,Brentford
+02-Apr-22,Leeds United,01:01,Southampton
+02-Apr-22,Liverpool,02:00,Watford
+02-Apr-22,Manchester United,01:01,Leicester City
+02-Apr-22,Wolverhampton Wanderers,02:01,Aston Villa
+03-Apr-22,Tottenham Hotspur,05:01,Newcastle United
+03-Apr-22,West Ham United,02:01,Everton
+04-Apr-22,Crystal Palace,03:00,Arsenal
+06-Apr-22,Burnley,03:02,Everton
+08-Apr-22,Newcastle United,01:00,Wolverhampton Wanderers
+09-Apr-22,Arsenal,01:02,Brighton and Hove Albion
+09-Apr-22,Aston Villa,00:04,Tottenham Hotspur
+09-Apr-22,Everton,01:00,Manchester United
+09-Apr-22,Southampton,00:06,Chelsea
+09-Apr-22,Watford,00:03,Leeds United
+10-Apr-22,Brentford,02:00,West Ham United
+10-Apr-22,Leicester City,02:01,Crystal Palace
+10-Apr-22,Manchester City,02:02,Liverpool
+10-Apr-22,Norwich City,02:00,Burnley
+16-Apr-22,Manchester United,03:02,Norwich City
+16-Apr-22,Southampton,01:00,Arsenal
+16-Apr-22,Tottenham Hotspur,00:01,Brighton and Hove Albion
+16-Apr-22,Watford,01:02,Brentford
+17-Apr-22,Newcastle United,02:01,Leicester City
+17-Apr-22,West Ham United,01:01,Burnley
+19-Apr-22,Liverpool,04:00,Manchester United
+20-Apr-22,Chelsea,02:04,Arsenal
+20-Apr-22,Everton,01:01,Leicester City
+20-Apr-22,Manchester City,03:00,Brighton and Hove Albion
+20-Apr-22,Newcastle United,01:00,Crystal Palace
+21-Apr-22,Burnley,02:00,Southampton
+23-Apr-22,Arsenal,03:01,Manchester United
+23-Apr-22,Brentford,00:00,Tottenham Hotspur
+23-Apr-22,Leicester City,00:00,Aston Villa
+23-Apr-22,Manchester City,05:01,Watford
+23-Apr-22,Norwich City,00:03,Newcastle United
+24-Apr-22,Brighton and Hove Albion,02:02,Southampton
+24-Apr-22,Burnley,01:00,Wolverhampton Wanderers
+24-Apr-22,Chelsea,01:00,West Ham United
+24-Apr-22,Liverpool,02:00,Everton
+25-Apr-22,Crystal Palace,00:00,Leeds United
+28-Apr-22,Manchester United,01:01,Chelsea
+30-Apr-22,Aston Villa,02:00,Norwich City
+30-Apr-22,Leeds United,00:04,Manchester City
+30-Apr-22,Newcastle United,00:01,Liverpool
+30-Apr-22,Southampton,01:02,Crystal Palace
+30-Apr-22,Watford,01:02,Burnley
+30-Apr-22,Wolverhampton Wanderers,00:03,Brighton and Hove Albion
+01-May-22,Everton,01:00,Chelsea
+01-May-22,Tottenham Hotspur,03:01,Leicester City
+01-May-22,West Ham United,01:02,Arsenal
+02-May-22,Manchester United,03:00,Brentford
+07-May-22,Brentford,03:00,Southampton
+07-May-22,Brighton and Hove Albion,04:00,Manchester United
+07-May-22,Burnley,01:03,Aston Villa
+07-May-22,Chelsea,02:02,Wolverhampton Wanderers
+07-May-22,Crystal Palace,01:00,Watford
+07-May-22,Liverpool,01:01,Tottenham Hotspur
+08-May-22,Arsenal,02:01,Leeds United
+08-May-22,Leicester City,01:02,Everton
+08-May-22,Manchester City,05:00,Newcastle United
+08-May-22,Norwich City,00:04,West Ham United
+10-May-22,Aston Villa,01:02,Liverpool
+11-May-22,Leeds United,00:03,Chelsea
+11-May-22,Leicester City,03:00,Norwich City
+11-May-22,Watford,00:00,Everton
+11-May-22,Wolverhampton Wanderers,01:05,Manchester City
+12-May-22,Tottenham Hotspur,03:00,Arsenal
+15-May-22,Aston Villa,01:01,Crystal Palace
+15-May-22,Everton,02:03,Brentford
+15-May-22,Leeds United,01:01,Brighton and Hove Albion
+15-May-22,Tottenham Hotspur,01:00,Burnley
+15-May-22,Watford,01:05,Leicester City
+15-May-22,West Ham United,02:02,Manchester City
+15-May-22,Wolverhampton Wanderers,01:01,Norwich City
+16-May-22,Newcastle United,02:00,Arsenal
+17-May-22,Southampton,01:02,Liverpool
+19-May-22,Aston Villa,01:01,Burnley
+19-May-22,Chelsea,01:01,Leicester City
+19-May-22,Everton,03:02,Crystal Palace
+22-May-22,Arsenal,05:01,Everton
+22-May-22,Brentford,01:02,Leeds United
+22-May-22,Brighton and Hove Albion,03:01,West Ham United
+22-May-22,Burnley,01:02,Newcastle United
+22-May-22,Chelsea,02:01,Watford
+22-May-22,Crystal Palace,01:00,Manchester United
+22-May-22,Leicester City,04:01,Southampton
+22-May-22,Liverpool,03:01,Wolverhampton Wanderers
+22-May-22,Manchester City,03:02,Aston Villa
+22-May-22,Norwich City,00:05,Tottenham Hotspur
