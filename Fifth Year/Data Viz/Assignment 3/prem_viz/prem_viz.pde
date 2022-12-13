@@ -31,8 +31,11 @@ String[] awayTeam;
 String[] result;
 Button[] teamList1Buttons;
 Button[] teamList2Buttons;
+HashMap<String, ArrayList<Button>> playerButtons1;
+HashMap<String, ArrayList<Button>> playerButtons2;
 HashMap<String, int[]> teamTableStats;
 HashMap<String, int[]> tempTable;
+HashMap<String, float[]> playerStatsPieCHart;
 
 
 // Paddings, helper, scalers
@@ -74,6 +77,11 @@ final int GD_INDEX = 7;
 final int POINTS_INDEX = 8;
 final int TABLE = 1;
 final int GRAPH = -1;
+final color[] PI_COLORS = {};
+boolean selectedTeam1;
+boolean confirmedTeam1;
+boolean selectedTeam2;
+boolean confirmedTeam2;
 
 // Objects
 
@@ -132,6 +140,7 @@ int lastRecordedTime = 0;
 boolean pause = false;
 int resultIndex;
 String[] selectedTeams;
+String[] selectedPlayers;
 int teamList1X;
 int teamList2X;
 int teamListY;
@@ -160,6 +169,17 @@ String[] getDataString(String tableName, String columnName){
   int index = 0;
   for (TableRow row : table.rows() ){
     data[index] = row.getString(columnName);
+    index++;
+  }
+  return data;
+}
+
+float[] getDataFloat(String tableName, String columnName){
+  Table table = loadTable(tableName, "header, csv");
+  float[] data = new float[table.getRowCount()];
+  int index = 0;
+  for (TableRow row : table.rows() ){
+    data[index] = row.getFloat(columnName);
     index++;
   }
   return data;
@@ -242,11 +262,35 @@ void update(){
     playButtonColor = PLAY_BUTTON;
   }
 
-  for(int index=0; index<teamList1Buttons.length; index++){
-    teamList1Buttons[index].update();
-    teamList2Buttons[index].update();
+  if(selectedTeams[0] == "UNSELECTED"){
+    for(int index=0; index<teamList1Buttons.length; index++){
+      teamList1Buttons[index].update();
+    }
   }
 
+  if(selectedTeams[1] == "UNSELECTED"){
+    for(int index=0; index<teamList2Buttons.length; index++){
+      teamList2Buttons[index].update();
+    }
+  }
+  
+
+  if(selectedPlayers[0] == "UNSELECTED"){
+    for(String team : playerButtons1.keySet()){
+      for(Button button : playerButtons1.get(team)){
+        button.update();
+      }
+    }
+  }
+  
+  if(selectedPlayers[1] == "UNSELECTED"){
+    for(String team : playerButtons2.keySet()){
+      for(Button button : playerButtons2.get(team)){
+        button.update();
+      }
+    }
+  }
+  
 }
 
 void mousePressed(){
@@ -284,6 +328,8 @@ void mousePressed(){
         otherButtons.selected = false;
       }
       teamList1Buttons[index].selected = true;
+      selectedTeams[0] = teamList1Buttons[index].value;
+      selectedTeam1 = true;
     }
 
     if(teamList2Buttons[index].over){
@@ -291,11 +337,42 @@ void mousePressed(){
         otherButtons.selected = false;
       }
       teamList2Buttons[index].selected = true;
+      selectedTeams[1] = teamList2Buttons[index].value;
+      selectedTeam2 = true;
+    }
+  }
+
+  if(confirmedTeam1){
+    ArrayList<Button> buttons = playerButtons1.get(selectedTeams[0]);
+    for(int index = 0; index<buttons.size(); index++){
+      if(buttons.get(index).over){
+        for(Button otherButtons : buttons){
+          otherButtons.selected = false;
+        }
+        buttons.get(index).selected = true;
+        selectedPlayers[0] = buttons.get(index).value;
+      }
+    }
+  }
+
+  if(confirmedTeam2){
+    ArrayList<Button> buttons = playerButtons2.get(selectedTeams[1]);
+    for(int index = 0; index<buttons.size(); index++){
+      if(buttons.get(index).over){
+        for(Button otherButtons : buttons){
+          otherButtons.selected = false;
+        }
+        buttons.get(index).selected = true;
+        selectedPlayers[1] = buttons.get(index).value;
+      }
     }
   }
   
-  //println("Selected Team: "+selectedTeams[0]+" Over Team: "+overTeam1);
-  selectedTeams[1] = overTeam2;
+}
+
+void mouseReleased(){
+  confirmedTeam1 = selectedTeam1;
+  confirmedTeam2 = selectedTeam2;
 }
 
 void updateArray(float[][] array, int row, int col, float increment){
@@ -395,14 +472,72 @@ void drawTable(HashMap<String, int[]> tableData){
 
 void drawListOfTeams(HashMap<String, int[]> tableData){
   fill(255);
-  rect(teamList1X, teamListY, teamListWidth, teamListHeight);
-  rect(teamList2X, teamListY, teamListWidth, teamListHeight);
+
+  if(selectedTeams[0] == "UNSELECTED") rect(teamList1X, teamListY, teamListWidth, teamListHeight);
+  else drawLeftListOfPlayers(selectedTeams[0]);
+
+  if(selectedTeams[1] == "UNSELECTED") rect(teamList2X, teamListY, teamListWidth, teamListHeight);
+  else drawRightListOfPlayers(selectedTeams[1]);
 
   for(int index=0; index<teamList1Buttons.length; index++){
-    teamList1Buttons[index].show();
-    teamList2Buttons[index].show();
+    if(selectedTeams[0] == "UNSELECTED") teamList1Buttons[index].show();
+    if(selectedTeams[1] == "UNSELECTED") teamList2Buttons[index].show();
   }
   
+}
+
+void drawLeftListOfPlayers(String team){
+  fill(255);
+
+  ArrayList<Button> buttons = playerButtons1.get(team);
+
+  if(selectedPlayers[0] == "UNSELECTED") rect(teamList1X, teamListY, teamListWidth, teamListHeight);
+  else showPlayerStats(selectedPlayers[0], 0);
+
+  for(int index=0; index<buttons.size(); index++){
+    if(selectedPlayers[0] == "UNSELECTED") buttons.get(index).show();
+  }
+}
+
+void drawRightListOfPlayers(String team){
+  fill(255);
+
+  ArrayList<Button> buttons = playerButtons2.get(team);
+
+  if(selectedPlayers[1] == "UNSELECTED") rect(teamList2X, teamListY, teamListWidth, teamListHeight);
+  else showPlayerStats(selectedPlayers[1], 1);
+
+  for(int index=0; index<buttons.size(); index++){
+    if(selectedPlayers[1] == "UNSELECTED") buttons.get(index).show();
+  }
+}
+
+void showPlayerStats(String player, int side){
+  float diameter = 300;
+  float x;
+  float y = 3*height/4;
+  if(side==0){
+    x = 6*width/8 - (diameter/2+padding);
+  }else{
+    x = 6*width/8 + (diameter/2+padding);
+  }
+
+  pieChart(diameter, tableData.get(team), x, y);
+}
+
+void showTeamStats(String team, HashMap<String, int[]> tableData, int side){
+  
+  
+}
+
+void pieChart(float diameter, int[] data, float x, float y) {
+  float lastAngle = 0;
+  for (int i = 0; i < data.length; i++) {
+    float gray = map(i, 0, data.length, 0, 255);
+    fill(gray);
+    arc(x, y, diameter, diameter, lastAngle, lastAngle+radians(data[i]));
+    lastAngle += radians(data[i]);
+  }
 }
 
 void showResults(){
@@ -576,6 +711,8 @@ void setup(){
   playerNames = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Player");
   matchesPlayed = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "MP");
   minsPlayed = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Min");
+  String[] allTeams = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Team");
+  String[] allPlayers = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Player");
 
   String[] teams = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Team");
   int[] pos = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Pos");
@@ -663,8 +800,11 @@ void setup(){
   resultIndex = 0;
 
   selectedTeams = new String[2];
-  selectedTeams[0] = "TEST";
-  selectedTeams[1] = "TEST";
+  selectedTeams[0] = "UNSELECTED";
+  selectedTeams[1] = "UNSELECTED";
+  selectedPlayers = new String[2];
+  selectedPlayers[0] = "UNSELECTED";
+  selectedPlayers[1] = "UNSELECTED";
   teamList1X = width/2 + 8*padding;
   teamList2X = 6*width/8 + 2*padding;
   teamListY = height/2+5*padding;
@@ -677,11 +817,48 @@ void setup(){
 
   teamList1Buttons = new Button[teams.length];
   teamList2Buttons = new Button[teams.length];
-  int boxHeight = teamListHeight/(teams.length-1);
+  float boxHeight = teamListHeight/(teams.length-1);
   for(int index = 0; index<teams.length; index++){
-    teamList1Buttons[index] = new Button(teamList1X, teamListY+(boxHeight*index), teamListWidth, boxHeight, false, false, teams[index]);
-    teamList2Buttons[index] = new Button(teamList2X, teamListY+(boxHeight*index), teamListWidth, boxHeight, false, false, teams[index]);
+    teamList1Buttons[index] = new Button(teamList1X, teamListY+(boxHeight*index), teamListWidth, boxHeight, false, false, teams[index], 15);
+    teamList2Buttons[index] = new Button(teamList2X, teamListY+(boxHeight*index), teamListWidth, boxHeight, false, false, teams[index], 15);
   }
+
+  playerButtons1 = new HashMap<String, ArrayList<Button>>();
+  playerButtons2 = new HashMap<String, ArrayList<Button>>();
+  for(int index=0; index<teams.length; index++){
+    ArrayList<Button> buttons1 = new ArrayList<Button>();
+    ArrayList<Button> buttons2 = new ArrayList<Button>();
+    String team = teams[index];
+    int numPlayersOnTeam = 0;
+    for(int i = 0; i<allTeams.length; i++){
+      if(allTeams[i].equals(team)){
+        numPlayersOnTeam++;
+      }
+    }
+    
+    
+    boxHeight = float(teamListHeight)/float(numPlayersOnTeam);
+    int posInList=0;
+    for(int i = 0; i<allTeams.length; i++){
+      if(allTeams[i].equals(team)){
+        buttons1.add(new Button(teamList1X, teamListY+(boxHeight*posInList), teamListWidth, boxHeight, false, false, allPlayers[i], 10));
+        buttons2.add(new Button(teamList2X, teamListY+(boxHeight*posInList), teamListWidth, boxHeight, false, false, allPlayers[i], 10));
+        posInList++;
+      }
+    }
+    posInList=0;
+
+    playerButtons1.put(teams[index], buttons1);
+    playerButtons2.put(teams[index], buttons2);
+
+    numPlayersOnTeam = 0;
+  }
+
+  selectedTeam1 = false;
+  confirmedTeam1 = false;
+  selectedTeam2 = false;
+  confirmedTeam2 = false;
+
 
 }
 
