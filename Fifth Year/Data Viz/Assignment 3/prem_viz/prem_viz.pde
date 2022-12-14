@@ -69,7 +69,7 @@ final color HOVER_COLOR = #808080;
 final color PLAY_BUTTON = #FF0000;
 final color PLAY_HOVER = #A30000;
 final String GAME = "GAME";
-final String MIN = "MIN";
+final String MIN = "MINUTE";
 final String TOTAL = "TOTAL";
 final float MAX_YCARDS_PER_MIN = 0.15331252;
 final float MIN_YCARDS_PER_MIN = 0.0;
@@ -85,35 +85,17 @@ final int GA_INDEX = 6;
 final int GD_INDEX = 7;
 final int POINTS_INDEX = 8;
 final int TABLE = 1;
-final int GRAPH = -1;
-final color[] PI_COLORS = {};
 boolean selectedTeam1;
 boolean confirmedTeam1;
 boolean selectedTeam2;
 boolean confirmedTeam2;
-
-// Objects
 
 // Global Variables
 int xMin;
 int xMax;
 int yMin;
 int yMax;
-int minimizer = 4;
-int minimizerDisplayX;
-int minimizerDisplayY;
-int minimizerDisplayWidth;
-int minimizerDisplayHeight;
-int minimizerIncreaseButtonX;
-int minimizerIncreaseButtonY;
-int minimizerIncreaseButtonWidth;
-int minimizerIncreaseButtonHeight;
-boolean overMinimizerIncreaseButton;
-boolean overMinimizerDecreaseButton;
-int minimizerDecreaseButtonX;
-int minimizerDecreaseButtonY;
-int minimizerDecreaseButtonWidth;
-int minimizerDecreaseButtonHeight;
+
 boolean overTotalButton;
 boolean overPerMinButton;
 boolean overPerGameButton;
@@ -158,6 +140,10 @@ int teamListHeight;
 String overTeam1;
 String overTeam2;
 boolean overTeam;
+
+// Objects
+Stepper goalStepper;
+Stepper assistStepper;
 
 
 // Functions
@@ -221,18 +207,6 @@ boolean overCircleButton(int x, int y, int diameter) {
 }
 
 void update(){
-  if(overButton(minimizerIncreaseButtonX, minimizerIncreaseButtonY, minimizerIncreaseButtonWidth, minimizerIncreaseButtonHeight)){
-    overMinimizerIncreaseButton = true;
-  }else{
-    overMinimizerIncreaseButton = false;
-  }
-
-  if(overButton(minimizerDecreaseButtonX, minimizerDecreaseButtonY, minimizerDecreaseButtonWidth, minimizerDecreaseButtonHeight)){
-    overMinimizerDecreaseButton = true;
-  }else{
-    overMinimizerDecreaseButton = false;
-  }
-
   if(overButton(perTotalBoxX, perTotalBoxY, perTotalBoxWidth, perTotalBoxHeight)){
     overTotalButton = true;
     perTotalButtonColor = HOVER_COLOR;
@@ -299,18 +273,13 @@ void update(){
       }
     }
   }
+
+  goalStepper.update();
+  assistStepper.update();
   
 }
 
 void mousePressed(){
-  if(overMinimizerIncreaseButton && minimizer<min(MAX_GOALS, MAX_ASSISTS)-1){
-    minimizer++;
-  }
-
-  if(overMinimizerDecreaseButton && minimizer>MIN_GOALS){
-    minimizer--;
-  }
-
   if(overPerGameButton){
     disipleSelected = GAME;
   }
@@ -374,6 +343,30 @@ void mousePressed(){
         buttons.get(index).selected = true;
         selectedPlayers[1] = buttons.get(index).value;
       }
+    }
+  }
+
+  if(goalStepper.overIncreaseButton){
+    if(goalStepper.value < MAX_GOALS-1){
+      goalStepper.value++;
+    }
+  }
+
+  if(goalStepper.overDecreaseButton){
+    if(goalStepper.value > MIN_GOALS){
+      goalStepper.value--;
+    }
+  }
+
+  if(assistStepper.overIncreaseButton){
+    if(assistStepper.value < MAX_ASSISTS-1){
+      assistStepper.value++;
+    }
+  }
+
+  if(assistStepper.overDecreaseButton){
+    if(assistStepper.value > MIN_ASSISTS){
+      assistStepper.value--;
     }
   }
   
@@ -825,22 +818,6 @@ void setup(){
   xMax = width/2-8*padding;
   yMin = height/2-4*padding;
   yMax = 4*padding;
-  
-  minimizerDisplayX = xMax+4*padding-10;
-  minimizerDisplayY = yMax+4*padding;
-  minimizerDisplayWidth = 40;
-  minimizerDisplayHeight = 40;
-  minimizerIncreaseButtonX = minimizerDisplayX;
-  minimizerIncreaseButtonY = minimizerDisplayY-20;
-  minimizerIncreaseButtonWidth = minimizerDisplayWidth;
-  minimizerIncreaseButtonHeight = 20;
-  minimizerDecreaseButtonX = minimizerDisplayX;
-  minimizerDecreaseButtonY = minimizerDisplayY + minimizerDisplayHeight;
-  minimizerDecreaseButtonWidth = minimizerDisplayWidth;
-  minimizerDecreaseButtonHeight = 20;
-
-  overMinimizerIncreaseButton = false;
-  overMinimizerDecreaseButton = false;
 
   overTotalButton = overPerMinButton = overPerGameButton = false;
 
@@ -914,7 +891,6 @@ void setup(){
       }
     }
     
-    
     boxHeight = float(teamListHeight)/float(numPlayersOnTeam);
     int posInList=0;
     for(int i = 0; i<allTeams.length; i++){
@@ -937,7 +913,14 @@ void setup(){
   selectedTeam2 = false;
   confirmedTeam2 = false;
 
+  int goalStepperX = xMax+4*padding-10;
+  int goalStepperY = yMax+4*padding;
+  int stepperWidth = 40;
+  int stepperHeight = 40;
+  int stepperButtonHeight = 20;
 
+  goalStepper = new Stepper(goalStepperX, goalStepperY, stepperWidth, stepperHeight, false, false, 4, stepperButtonHeight, "Min Goals");
+  assistStepper = new Stepper(goalStepperX, goalStepperY+150, stepperWidth, stepperHeight, false, false, 4, stepperButtonHeight, "Min Assists");
 }
 
 
@@ -982,47 +965,33 @@ void draw(){
   line(xMin, yMin, xMin, yMax);
   
   // Numbering axes
-  for(int i = minimizer; i<=MAX_GOALS; i++){
-    int step = (xMax-xMin)/(MAX_GOALS-minimizer);
+  for(int i = goalStepper.value; i<=MAX_GOALS; i++){
+    int step = (xMax-xMin)/(MAX_GOALS-goalStepper.value);
     fill(0);
     textSize(12);
     textAlign(LEFT);
-    text(i, xMin+(i-minimizer)*step, yMin+15);
+    text(i, xMin+(i-goalStepper.value)*step, yMin+15);
   }
   
-  for(int i = minimizer; i<=MAX_ASSISTS; i++){
-    int step = (yMax-yMin)/(MAX_ASSISTS-minimizer);
+  for(int i = assistStepper.value; i<=MAX_ASSISTS; i++){
+    int step = (yMax-yMin)/(MAX_ASSISTS-assistStepper.value);
     fill(0);
     textAlign(LEFT);
-    text(i, xMin-15, yMin+(i-minimizer)*step);
+    text(i, xMin-15, yMin+(i-assistStepper.value)*step);
   }
   
   // Adding slider 
-  strokeWeight(1);
-  fill(255);
-  rect(minimizerDisplayX, minimizerDisplayY, minimizerDisplayWidth, minimizerDisplayHeight);
-  fill(0);
-  textSize(45);
-  textAlign(CENTER);
-  text(minimizer, minimizerDisplayX+minimizerDisplayWidth/2, minimizerDisplayY+minimizerDisplayHeight-5);
-  fill(#C0C0C0);
-  rect(minimizerIncreaseButtonX, minimizerIncreaseButtonY, minimizerIncreaseButtonWidth, minimizerIncreaseButtonHeight, 5, 5, 0, 0);
-  rect(minimizerDecreaseButtonX, minimizerDecreaseButtonY, minimizerDecreaseButtonWidth, minimizerDecreaseButtonHeight, 0, 0, 5, 5);
-  triangle(minimizerIncreaseButtonX+minimizerIncreaseButtonWidth/2, minimizerIncreaseButtonY+5, 
-  minimizerIncreaseButtonX+minimizerIncreaseButtonWidth/2-10, minimizerIncreaseButtonY+15, minimizerIncreaseButtonX+minimizerIncreaseButtonWidth/2+10, 
-  minimizerIncreaseButtonY+15);
-  triangle(minimizerDecreaseButtonX+minimizerDecreaseButtonWidth/2, minimizerDecreaseButtonY+15, 
-  minimizerDecreaseButtonX+minimizerDecreaseButtonWidth/2-10, minimizerDecreaseButtonY+5, minimizerDecreaseButtonX+minimizerDecreaseButtonWidth/2+10, 
-  minimizerDecreaseButtonY+5);
+  goalStepper.show();
+  assistStepper.show();
 
   
   // Adding football markers 
   strokeWeight(3);
   for (int index=0; index< playerAges.length; index++){
-    if(playerGoals[index]>minimizer && playerAssists[index]>minimizer){
+    if(playerGoals[index]>goalStepper.value && playerAssists[index]>assistStepper.value){
       fill(0);
-      int markerX = convert(playerGoals[index], MAX_GOALS, minimizer, xMax, xMin )-5;
-      int markerY = convert(playerAssists[index], MAX_ASSISTS, minimizer, yMax , yMin );
+      int markerX = convert(playerGoals[index], MAX_GOALS, goalStepper.value, xMax, xMin )-5;
+      int markerY = convert(playerAssists[index], MAX_ASSISTS, assistStepper.value, yMax , yMin );
       image(soccerBall, markerX, markerY, soccerBallMarkerSize, soccerBallMarkerSize);
       
       if(mouseX >= markerX && mouseX <= markerX+soccerBallMarkerSize && mouseY >= markerY && mouseY <= markerY+soccerBallMarkerSize){
