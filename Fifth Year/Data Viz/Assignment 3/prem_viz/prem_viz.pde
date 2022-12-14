@@ -1,9 +1,3 @@
-// TO DO: 
-// - Sort scalling in left bottom quadrant.
-// - Add button and perhas do by game etc for top left 
-// - Add animation and graph to left top
-// - Add entire left bottom
-
 // Images
 PImage soccerBall;
 PImage premLogoRect;
@@ -95,7 +89,6 @@ int xMin;
 int xMax;
 int yMin;
 int yMax;
-
 boolean overTotalButton;
 boolean overPerMinButton;
 boolean overPerGameButton;
