@@ -24,6 +24,15 @@ int[] playerGoals;
 int[] playerAssists;
 int[] matchesPlayed;
 int[] minsPlayed;
+String[] allTeams;
+String[] allPlayers;
+float[] expectedGoals;
+float[] expectedAssists;
+String[] nations;
+String[] position;
+int[] penGoals;
+int[] pensMade;
+int[] starts;
 String[] playerNames;
 String[] matchDates;
 String[] homeTeam;
@@ -35,7 +44,7 @@ HashMap<String, ArrayList<Button>> playerButtons1;
 HashMap<String, ArrayList<Button>> playerButtons2;
 HashMap<String, int[]> teamTableStats;
 HashMap<String, int[]> tempTable;
-HashMap<String, float[]> playerStatsPieCHart;
+HashMap<String, Integer> allPlayerStatsIndex;
 
 
 // Paddings, helper, scalers
@@ -62,7 +71,7 @@ final color PLAY_HOVER = #A30000;
 final String GAME = "GAME";
 final String MIN = "MIN";
 final String TOTAL = "TOTAL";
-final float MAX_YCARDS_PER_MIN = 0.12535983;
+final float MAX_YCARDS_PER_MIN = 0.15331252;
 final float MIN_YCARDS_PER_MIN = 0.0;
 final int MAX_YCARDS_PER_GAME = 6;
 final int MIN_YCARDS_PER_GAME = 0;
@@ -492,7 +501,7 @@ void drawLeftListOfPlayers(String team){
   ArrayList<Button> buttons = playerButtons1.get(team);
 
   if(selectedPlayers[0] == "UNSELECTED") rect(teamList1X, teamListY, teamListWidth, teamListHeight);
-  else showPlayerStats(selectedPlayers[0], 0);
+  else showPlayerStats(selectedPlayers[0], -1);
 
   for(int index=0; index<buttons.size(); index++){
     if(selectedPlayers[0] == "UNSELECTED") buttons.get(index).show();
@@ -513,31 +522,88 @@ void drawRightListOfPlayers(String team){
 }
 
 void showPlayerStats(String player, int side){
-  float diameter = 300;
-  float x;
-  float y = 3*height/4;
-  if(side==0){
-    x = 6*width/8 - (diameter/2+padding);
-  }else{
-    x = 6*width/8 + (diameter/2+padding);
+  // 6*width/8, height/2+5*padding, 6*width/8, height-5*padding
+  int playerIndex = allPlayerStatsIndex.get(player);
+  int otherPlayerIndex = 0;
+  boolean compare = false;
+  if(!selectedPlayers[0].equals("UNSELECTED") && !selectedPlayers[1].equals("UNSELECTED")){
+    compare = true;
+    if(side==-1){
+      otherPlayerIndex = allPlayerStatsIndex.get(selectedPlayers[1]);
+    }else{
+      otherPlayerIndex = allPlayerStatsIndex.get(selectedPlayers[0]);
+    }
+    
   }
+  
+  fill(0);
+  textSize(30);
+  textAlign(CENTER);
+  text(allPlayers[playerIndex], 6*width/8 + (side*200), height/2+5*padding);
+  textSize(15);
+  textAlign(LEFT);
 
-  pieChart(diameter, tableData.get(team), x, y);
+  // Labels
+  text("Team", width/2+2*padding, height/2+7*padding);
+  text("Nation", width/2+2*padding, height/2+9*padding);
+  text("Position", width/2+2*padding, height/2+11*padding);
+  text("Age", width/2+2*padding, height/2+13*padding);
+  text("Matches Played", width/2+2*padding, height/2+15*padding);
+  text("Matches Started", width/2+2*padding, height/2+17*padding);
+  text("Minutes Played", width/2+2*padding, height/2+19*padding);
+  text("Goals", width/2+2*padding, height/2+21*padding);
+  text("Assists", width/2+2*padding, height/2+23*padding);
+  text("Penalty Goals", width/2+2*padding, height/2+25*padding);
+
+  // Personal Stats
+  textAlign(CENTER);
+  textSize(20);
+  text(allTeams[playerIndex], 6*width/8 + (side*200), height/2+7*padding);
+  text(nations[playerIndex], 6*width/8 + (side*200), height/2+9*padding);
+  text(position[playerIndex], 6*width/8 + (side*200), height/2+11*padding);
+  text(playerAges[playerIndex], 6*width/8 + (side*200), height/2+13*padding);
+  
+  // Numerical Stats
+  fill(compare? getColor(matchesPlayed[playerIndex], matchesPlayed[otherPlayerIndex]) : #7EC8E3);
+  rect(6*width/8, height/2+14*padding, (side*5*matchesPlayed[playerIndex]), 2*padding);
+  textAlign(RIGHT);
+  fill(0);
+  text(matchesPlayed[playerIndex], 6*width/8 + (side*5*matchesPlayed[playerIndex]) + (side*(side==1?25:5)), height/2+15*padding+7);
+
+  fill(compare? getColor(starts[playerIndex], starts[otherPlayerIndex]) : #7EC8E3);
+  rect(6*width/8, height/2+16*padding, (side*5*starts[playerIndex]), 2*padding);
+  fill(0);
+  text(starts[playerIndex], 6*width/8 + (side*5*starts[playerIndex]) + (side*(side==1?25:5)), height/2+17*padding+7);
+
+  fill(compare? getColor(minsPlayed[playerIndex], minsPlayed[otherPlayerIndex]) : #7EC8E3);
+  rect(6*width/8, height/2+18*padding, (side*(minsPlayed[playerIndex]/90)), 2*padding);
+  fill(0);
+  text(minsPlayed[playerIndex], 6*width/8 + (side*5*minsPlayed[playerIndex]) + (side*(side==1?25:5)), height/2+19*padding+7);
+
+  fill(compare? getColor(playerGoals[playerIndex], playerGoals[otherPlayerIndex]) : #7EC8E3);
+  rect(6*width/8, height/2+20*padding, (side*5*playerGoals[playerIndex]), 2*padding);
+  fill(0);
+  text(playerGoals[playerIndex], 6*width/8 + (side*5*playerGoals[playerIndex]) + (side*(side==1?25:5)), height/2+21*padding+7);
+
+  fill(compare? getColor(playerAssists[playerIndex], playerAssists[otherPlayerIndex]) : #7EC8E3);
+  rect(6*width/8, height/2+22*padding, (side*5*playerAssists[playerIndex]), 2*padding);
+  fill(0);
+  text(playerAssists[playerIndex], 6*width/8 + (side*5*playerAssists[playerIndex]) + (side*(side==1?25:5)), height/2+23*padding+7);
+
+  fill(compare? getColor(penGoals[playerIndex], penGoals[otherPlayerIndex]) : #7EC8E3);
+  rect(6*width/8, height/2+24*padding, (side*5*penGoals[playerIndex]), 2*padding);
+  fill(0);
+  text(penGoals[playerIndex], 6*width/8 + (side*5*penGoals[playerIndex]) + (side*(side==1?25:5)), height/2+25*padding+7);
 }
 
-void showTeamStats(String team, HashMap<String, int[]> tableData, int side){
-  
-  
-}
-
-void pieChart(float diameter, int[] data, float x, float y) {
-  float lastAngle = 0;
-  for (int i = 0; i < data.length; i++) {
-    float gray = map(i, 0, data.length, 0, 255);
-    fill(gray);
-    arc(x, y, diameter, diameter, lastAngle, lastAngle+radians(data[i]));
-    lastAngle += radians(data[i]);
-  }
+color getColor(int stat1, int stat2){
+  if(stat1>stat2){
+      return #00D100;
+    }else if(stat1<stat2){
+      return #FF5C5C;
+    }else{
+      return #7EC8E3;
+    }
 }
 
 void showResults(){
@@ -711,8 +777,20 @@ void setup(){
   playerNames = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Player");
   matchesPlayed = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "MP");
   minsPlayed = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Min");
-  String[] allTeams = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Team");
-  String[] allPlayers = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Player");
+  allTeams = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Team");
+  allPlayers = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Player");
+  expectedGoals = getDataFloat("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "xG");
+  expectedAssists = getDataFloat("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "xA");
+  nations = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Nation");
+  position = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Pos");
+  penGoals = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "G-PK");
+  pensMade = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "PK");
+  starts = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\Football Players Stats (Premier League 2021-2022).csv", "Starts");
+
+  allPlayerStatsIndex = new HashMap<String, Integer>();
+  for(int index = 0; index<allPlayers.length; index++){
+    allPlayerStatsIndex.put(allPlayers[index], index);
+  }
 
   String[] teams = getDataString("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Team");
   int[] pos = getDataInt("C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Data Visualisation\\Assignment 3\\final_table.csv", "Pos");
