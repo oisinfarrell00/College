@@ -559,34 +559,34 @@ void showPlayerStats(String player, int side){
   // Numerical Stats
   fill(compare? getColor(matchesPlayed[playerIndex], matchesPlayed[otherPlayerIndex]) : #7EC8E3);
   rect(6*width/8, height/2+14*padding, (side*5*matchesPlayed[playerIndex]), 2*padding);
-  textAlign(RIGHT);
+  textAlign(side == -1 ? RIGHT : LEFT);
   fill(0);
-  text(matchesPlayed[playerIndex], 6*width/8 + (side*5*matchesPlayed[playerIndex]) + (side*(side==1?25:5)), height/2+15*padding+7);
+  text(matchesPlayed[playerIndex], 6*width/8 + (side*5*matchesPlayed[playerIndex]) + (side*(5)), height/2+15*padding+7);
 
   fill(compare? getColor(starts[playerIndex], starts[otherPlayerIndex]) : #7EC8E3);
   rect(6*width/8, height/2+16*padding, (side*5*starts[playerIndex]), 2*padding);
   fill(0);
-  text(starts[playerIndex], 6*width/8 + (side*5*starts[playerIndex]) + (side*(side==1?25:5)), height/2+17*padding+7);
+  text(starts[playerIndex], 6*width/8 + (side*5*starts[playerIndex]) + (side*5), height/2+17*padding+7);
 
   fill(compare? getColor(minsPlayed[playerIndex], minsPlayed[otherPlayerIndex]) : #7EC8E3);
-  rect(6*width/8, height/2+18*padding, (side*(minsPlayed[playerIndex]/90)), 2*padding);
+  rect(6*width/8, height/2+18*padding, (side*(minsPlayed[playerIndex])/30), 2*padding);
   fill(0);
-  text(minsPlayed[playerIndex], 6*width/8 + (side*5*minsPlayed[playerIndex]) + (side*(side==1?25:5)), height/2+19*padding+7);
+  text(minsPlayed[playerIndex], 6*width/8 + (side*minsPlayed[playerIndex]/30) + (side*(5)), height/2+19*padding+7);
 
   fill(compare? getColor(playerGoals[playerIndex], playerGoals[otherPlayerIndex]) : #7EC8E3);
   rect(6*width/8, height/2+20*padding, (side*5*playerGoals[playerIndex]), 2*padding);
   fill(0);
-  text(playerGoals[playerIndex], 6*width/8 + (side*5*playerGoals[playerIndex]) + (side*(side==1?25:5)), height/2+21*padding+7);
+  text(playerGoals[playerIndex], 6*width/8 + (side*5*playerGoals[playerIndex]) + (side*(5)), height/2+21*padding+7);
 
   fill(compare? getColor(playerAssists[playerIndex], playerAssists[otherPlayerIndex]) : #7EC8E3);
   rect(6*width/8, height/2+22*padding, (side*5*playerAssists[playerIndex]), 2*padding);
   fill(0);
-  text(playerAssists[playerIndex], 6*width/8 + (side*5*playerAssists[playerIndex]) + (side*(side==1?25:5)), height/2+23*padding+7);
+  text(playerAssists[playerIndex], 6*width/8 + (side*5*playerAssists[playerIndex]) + (side*(5)), height/2+23*padding+7);
 
   fill(compare? getColor(penGoals[playerIndex], penGoals[otherPlayerIndex]) : #7EC8E3);
   rect(6*width/8, height/2+24*padding, (side*5*penGoals[playerIndex]), 2*padding);
   fill(0);
-  text(penGoals[playerIndex], 6*width/8 + (side*5*penGoals[playerIndex]) + (side*(side==1?25:5)), height/2+25*padding+7);
+  text(penGoals[playerIndex], 6*width/8 + (side*5*penGoals[playerIndex]) + (side*(5)), height/2+25*padding+7);
 }
 
 color getColor(int stat1, int stat2){
@@ -721,6 +721,18 @@ void showStaticInfo(){
   textSize(30);
   textAlign(CENTER);
   text("Premier League Standing 2021/22", 6*width/8, 3*padding);
+
+  textSize(15);
+  textAlign(LEFT);
+  text("PL - Matches Played", 7.25*width/8, 8*padding);
+  text("W - Matches Won", 7.25*width/8, 9*padding);
+  text("D - Matches Drew", 7.25*width/8, 10*padding);
+  text("L - Matches Lost", 7.25*width/8, 11*padding);
+  text("GF - Goals For", 7.25*width/8, 12*padding);
+  text("GA - Goals Againsts", 7.25*width/8, 13*padding);
+  text("GD - Goal Difference", 7.25*width/8, 14*padding);
+  text("Points - Points", 7.25*width/8, 15*padding);
+
   int logoWidth = 140;
   int logoHeight = 80;
 
