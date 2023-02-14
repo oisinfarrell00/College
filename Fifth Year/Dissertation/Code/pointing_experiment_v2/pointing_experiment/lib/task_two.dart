@@ -74,6 +74,7 @@ void _updateTrial(BuildContext context, int position) {
 
 Future<void> _incrementErrors(player) async {
   if (started) {
+    errors++;
     if (feedbackType == audio) {
       await player.resume();
     } else if (feedbackType == tactile) {
@@ -82,7 +83,6 @@ Future<void> _incrementErrors(player) async {
       await player.resume();
       HapticFeedback.mediumImpact();
     }
-    errors++;
   }
 }
 
@@ -129,7 +129,7 @@ class _TaskTwoState extends State<TaskTwo> {
   double spacing = convertMMToPixel(6);
   double buttonSize = convertMMToPixel(30);
   int selected = -1;
-  double borderThickness = 2.0;
+  double borderThickness = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +148,7 @@ class _TaskTwoState extends State<TaskTwo> {
             Text("Trial: ${(taskTwoTrial % 3) + 1}"),
             Text("Layout: ${feedbackType + 1}"),
             Text("Errors: $errors"),
+            const Text("Click the green button to begin trial!"),
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -271,11 +272,12 @@ class _TaskTwoState extends State<TaskTwo> {
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(width: borderThickness),
+                        backgroundColor: Colors.green,
                       ),
                       child: const Text(
-                        "START",
+                        "",
                         style: TextStyle(
-                          fontSize: 12.0,
+                          fontSize: 6.0,
                           color: Colors.black,
                         ),
                       ),

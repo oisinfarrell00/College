@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "646107647154",
+    "project_id": "pointing-experiment-v2",
+    "storage_bucket": "pointing-experiment-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646107647154:android:3de61fea0d0b06bf178dab",
+        "android_client_info": {
+          "package_name": "com.example.pointing_experiment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646107647154-ps69fu0boo831h03dbjrvmfa3p1aqn6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrBB0iboapWDZu5vfMxh7CImXjym0Jdlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646107647154-ps69fu0boo831h03dbjrvmfa3p1aqn6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

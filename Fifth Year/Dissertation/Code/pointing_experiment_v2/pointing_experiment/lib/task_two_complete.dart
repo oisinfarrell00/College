@@ -20,7 +20,7 @@ class _TaskTwoCompleteState extends State<TaskTwoComplete> {
           Center(
             child: ElevatedButton(
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
+                  backgroundColor: Colors.blueGrey,
                   side: const BorderSide(width: 2.0),
                 ),
                 onPressed: () {

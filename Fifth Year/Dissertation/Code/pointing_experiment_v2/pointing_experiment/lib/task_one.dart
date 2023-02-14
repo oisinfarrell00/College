@@ -146,6 +146,7 @@ class _TaskOneState extends State<TaskOne> {
             Text("Trial: ${(taskOneTrial % 3) + 1}"),
             Text("Layout: ${layout + 1}"),
             Text("Errors: $errors"),
+            const Text("Click the green button to begin trial!"),
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -269,11 +270,12 @@ class _TaskOneState extends State<TaskOne> {
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(width: borderThickness),
+                        backgroundColor: Colors.green,
                       ),
                       child: const Text(
-                        "START",
+                        "",
                         style: TextStyle(
-                          fontSize: 12.0,
+                          fontSize: 4.0,
                           color: Colors.black,
                         ),
                       ),
