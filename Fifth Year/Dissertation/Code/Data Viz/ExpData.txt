@@ -1,0 +1,3346 @@
+Participant 1
+Task 1
+Layout 1
+Trial 1
+Errors
+3
+Position
+3
+Time
+7575
+Trial 2
+Errors
+0
+Position
+4
+Time
+1892
+Trial 3
+Errors
+0
+Position
+5
+Time
+1500
+Layout 2
+Trial 1
+Errors
+0
+Position
+5
+Time
+1378
+Trial 2
+Errors
+0
+Position
+4
+Time
+1117
+Trial 3
+Errors
+0
+Position
+0
+Time
+1108
+Layout 3
+Trial 1
+Errors
+0
+Position
+2
+Time
+925
+Trial 2
+Errors
+0
+Position
+6
+Time
+840
+Trial 3
+Errors
+0
+Position
+4
+Time
+881
+Layout 4
+Trial 1
+Errors
+0
+Position
+6
+Time
+1243
+Trial 2
+Errors
+0
+Position
+4
+Time
+1077
+Trial 3
+Errors
+0
+Position
+7
+Time
+935
+Layout 5
+Trial 1
+Errors
+0
+Position
+3
+Time
+886
+Trial 2
+Errors
+0
+Position
+1
+Time
+769
+Trial 3
+Errors
+0
+Position
+4
+Time
+774
+Layout 6
+Trial 1
+Errors
+0
+Position
+6
+Time
+926
+Trial 2
+Errors
+0
+Position
+0
+Time
+1023
+Trial 3
+Errors
+0
+Position
+0
+Time
+983
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+3
+Position
+6
+Time
+12533
+Trial 2
+Errors
+0
+Position
+0
+Time
+1727
+Trial 3
+Errors
+3
+Position
+4
+Time
+7952
+FeedbackType 2
+Trial 1
+Errors
+4
+Position
+4
+Time
+10652
+Trial 2
+Errors
+1
+Position
+1
+Time
+1961
+Trial 3
+Errors
+5
+Position
+5
+Time
+13448
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+6
+Time
+1815
+Trial 2
+Errors
+0
+Position
+7
+Time
+1374
+Trial 3
+Errors
+0
+Position
+3
+Time
+1059
+FeedbackType 4
+Trial 1
+Errors
+3
+Position
+4
+Time
+8325
+Trial 2
+Errors
+0
+Position
+1
+Time
+1502
+Trial 3
+Errors
+7
+Position
+4
+Time
+16989
+Participant 2
+Task 1
+Layout 1
+Trial 1
+Errors
+1
+Position
+6
+Time
+2239
+Trial 2
+Errors
+0
+Position
+0
+Time
+1270
+Trial 3
+Errors
+0
+Position
+5
+Time
+1053
+Layout 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+1096
+Trial 2
+Errors
+0
+Position
+4
+Time
+1028
+Trial 3
+Errors
+0
+Position
+3
+Time
+1228
+Layout 3
+Trial 1
+Errors
+0
+Position
+2
+Time
+949
+Trial 2
+Errors
+0
+Position
+3
+Time
+887
+Trial 3
+Errors
+0
+Position
+6
+Time
+1034
+Layout 4
+Trial 1
+Errors
+2
+Position
+1
+Time
+3265
+Trial 2
+Errors
+2
+Position
+1
+Time
+2636
+Trial 3
+Errors
+2
+Position
+7
+Time
+3183
+Layout 5
+Trial 1
+Errors
+0
+Position
+3
+Time
+1034
+Trial 2
+Errors
+0
+Position
+5
+Time
+886
+Trial 3
+Errors
+0
+Position
+1
+Time
+895
+Layout 6
+Trial 1
+Errors
+0
+Position
+5
+Time
+1010
+Trial 2
+Errors
+0
+Position
+5
+Time
+1076
+Trial 3
+Errors
+0
+Position
+0
+Time
+1065
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+0
+Time
+965
+Trial 2
+Errors
+0
+Position
+2
+Time
+1041
+Trial 3
+Errors
+0
+Position
+3
+Time
+936
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+3
+Time
+909
+Trial 2
+Errors
+0
+Position
+4
+Time
+1069
+Trial 3
+Errors
+0
+Position
+2
+Time
+938
+FeedbackType 3
+Trial 1
+Errors
+1
+Position
+0
+Time
+1056
+Trial 2
+Errors
+0
+Position
+7
+Time
+927
+Trial 3
+Errors
+0
+Position
+6
+Time
+986
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+3
+Time
+915
+Trial 2
+Errors
+0
+Position
+7
+Time
+1155
+Trial 3
+Errors
+0
+Position
+5
+Time
+918
+Participant 3
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+0
+Time
+1474
+Trial 2
+Errors
+0
+Position
+4
+Time
+960
+Trial 3
+Errors
+0
+Position
+6
+Time
+806
+Layout 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+815
+Trial 2
+Errors
+0
+Position
+0
+Time
+853
+Trial 3
+Errors
+0
+Position
+7
+Time
+813
+Layout 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+781
+Trial 2
+Errors
+0
+Position
+3
+Time
+776
+Trial 3
+Errors
+0
+Position
+4
+Time
+676
+Layout 4
+Trial 1
+Errors
+0
+Position
+1
+Time
+789
+Trial 2
+Errors
+0
+Position
+0
+Time
+769
+Trial 3
+Errors
+0
+Position
+7
+Time
+686
+Layout 5
+Trial 1
+Errors
+0
+Position
+4
+Time
+715
+Trial 2
+Errors
+0
+Position
+7
+Time
+812
+Trial 3
+Errors
+0
+Position
+1
+Time
+799
+Layout 6
+Trial 1
+Errors
+0
+Position
+1
+Time
+691
+Trial 2
+Errors
+0
+Position
+0
+Time
+1174
+Trial 3
+Errors
+0
+Position
+0
+Time
+768
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+4
+Time
+961
+Trial 2
+Errors
+0
+Position
+2
+Time
+865
+Trial 3
+Errors
+0
+Position
+1
+Time
+854
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+0
+Time
+869
+Trial 2
+Errors
+0
+Position
+5
+Time
+762
+Trial 3
+Errors
+0
+Position
+4
+Time
+759
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+4
+Time
+849
+Trial 2
+Errors
+0
+Position
+0
+Time
+919
+Trial 3
+Errors
+0
+Position
+6
+Time
+790
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+7
+Time
+885
+Trial 2
+Errors
+0
+Position
+7
+Time
+1002
+Trial 3
+Errors
+0
+Position
+1
+Time
+967
+--
+Participant 4
+task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+3
+Time
+1772
+Trial 2
+Errors
+0
+Position
+6
+Time
+1323
+Trial 3
+Errors
+1
+Position
+4
+Time
+2452
+Layout 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+1094
+Trial 2
+Errors
+0
+Position
+1
+Time
+1037
+Trial 3
+Errors
+0
+Position
+4
+Time
+870
+Layout 3
+Trial 1
+Errors
+0
+Position
+0
+Time
+1214
+Trial 2
+Errors
+0
+Position
+7
+Time
+947
+Trial 3
+Errors
+0
+Position
+7
+Time
+905
+Layout 4
+Trial 1
+Errors
+3
+Position
+3
+Time
+4940
+Trial 2
+Errors
+3
+Position
+5
+Time
+5338
+Trial 3
+Errors
+2
+Position
+1
+Time
+2858
+Layout 5
+Trial 1
+Errors
+0
+Position
+7
+Time
+1072
+Trial 2
+Errors
+0
+Position
+1
+Time
+1052
+Trial 3
+Errors
+0
+Position
+1
+Time
+964
+Layout 6
+Trial 1
+Errors
+0
+Position
+7
+Time
+970
+Trial 2
+Errors
+0
+Position
+4
+Time
+923
+Trial 3
+Errors
+0
+Position
+6
+Time
+854
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+1
+Position
+7
+Time
+3365
+Trial 2
+Errors
+1
+Position
+1
+Time
+2296
+Trial 3
+Errors
+2
+Position
+3
+Time
+3597
+FeedbackType 2
+Trial 1
+Errors
+1
+Position
+1
+Time
+1946
+Trial 2
+Errors
+4
+Position
+2
+Time
+6945
+Trial 3
+Errors
+12
+Position
+2
+Time
+15196
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+1039
+Trial 2
+Errors
+2
+Position
+6
+Time
+3681
+Trial 3
+Errors
+0
+Position
+6
+Time
+1163
+FeedbackType 4
+Trial 1
+Errors
+3
+Position
+4
+Time
+3996
+Trial 2
+Errors
+4
+Position
+5
+Time
+5569
+Trial 3
+Errors
+0
+Position
+6
+Time
+1255
+Participant 5
+Task 1
+Layout 1
+Trial 1
+Errors
+2
+Position
+6
+Time
+6883
+Trial 2
+Errors
+0
+Position
+5
+Time
+1729
+Trial 3
+Errors
+13
+Position
+4
+Time
+22403
+Layout 2
+Trial 1
+Errors
+0
+Position
+5
+Time
+1587
+Trial 2
+Errors
+0
+Position
+4
+Time
+1090
+Trial 3
+Errors
+0
+Position
+2
+Time
+1078
+Layout 3
+Trial 1
+Errors
+0
+Position
+7
+Time
+1223
+Trial 2
+Errors
+0
+Position
+7
+Time
+1332
+Trial 3
+Errors
+0
+Position
+3
+Time
+1203
+Layout 4
+Trial 1
+Errors
+2
+Position
+0
+Time
+5091
+Trial 2
+Errors
+3
+Position
+3
+Time
+5556
+Trial 3
+Errors
+0
+Position
+5
+Time
+1935
+Layout 5
+Trial 1
+Errors
+1
+Position
+6
+Time
+2491
+Trial 2
+Errors
+0
+Position
+2
+Time
+1331
+Trial 3
+Errors
+0
+Position
+5
+Time
+1668
+Layout 6
+Trial 1
+Errors
+0
+Position
+2
+Time
+1341
+Trial 2
+Errors
+0
+Position
+2
+Time
+1225
+Trial 3
+Errors
+0
+Position
+0
+Time
+1326
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+2
+Position
+4
+Time
+6565
+Trial 2
+Errors
+3
+Position
+1
+Time
+9956
+Trial 3
+Errors
+0
+Position
+5
+Time
+2035
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+3
+Time
+2122
+Trial 2
+Errors
+0
+Position
+2
+Time
+1927
+Trial 3
+Errors
+0
+Position
+6
+Time
+1839
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+5
+Time
+1360
+Trial 2
+Errors
+2
+Position
+3
+Time
+4155
+Trial 3
+Errors
+3
+Position
+0
+Time
+5709
+FeedbackType 4
+Trial 1
+Errors
+1
+Position
+6
+Time
+3611
+Trial 2
+Errors
+0
+Position
+6
+Time
+1819
+Trial 3
+Errors
+0
+Position
+4
+Time
+1774
+Participant 6
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+5
+Time
+1584
+Trial 2
+Errors
+14
+Position
+6
+Time
+26726
+Trial 3
+Errors
+4
+Position
+3
+Time
+7509
+Layout 2
+Trial 1
+Errors
+1
+Position
+0
+Time
+3923
+Trial 2
+Errors
+0
+Position
+1
+Time
+1409
+Trial 3
+Errors
+0
+Position
+1
+Time
+838
+Layout 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+843
+Trial 2
+Errors
+0
+Position
+4
+Time
+815
+Trial 3
+Errors
+0
+Position
+7
+Time
+797
+Layout 4
+Trial 1
+Errors
+0
+Position
+2
+Time
+1051
+Trial 2
+Errors
+1
+Position
+7
+Time
+2216
+Trial 3
+Errors
+0
+Position
+6
+Time
+1218
+Layout 5
+Trial 1
+Errors
+0
+Position
+2
+Time
+905
+Trial 2
+Errors
+0
+Position
+5
+Time
+936
+Trial 3
+Errors
+0
+Position
+2
+Time
+822
+Layout 6
+Trial 1
+Errors
+0
+Position
+0
+Time
+918
+Trial 2
+Errors
+0
+Position
+5
+Time
+814
+Trial 3
+Errors
+0
+Position
+3
+Time
+780
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+1
+Position
+1
+Time
+2400
+Trial 2
+Errors
+1
+Position
+6
+Time
+2881
+Trial 3
+Errors
+0
+Position
+3
+Time
+1450
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+5
+Time
+1505
+Trial 2
+Errors
+0
+Position
+3
+Time
+1314
+Trial 3
+Errors
+0
+Position
+6
+Time
+1304
+FeedbackType 3
+Trial 1
+Errors
+2
+Position
+7
+Time
+3564
+Trial 2
+Errors
+3
+Position
+4
+Time
+4758
+Trial 3
+Errors
+7
+Position
+7
+Time
+9317
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+2
+Time
+2194
+Trial 2
+Errors
+0
+Position
+7
+Time
+1061
+Trial 3
+Errors
+0
+Position
+7
+Time
+893
+Participant 7
+Task 1
+Layout 1
+Trial 1
+Errors
+2
+Position
+5
+Time
+5031
+Trial 2
+Errors
+0
+Position
+4
+Time
+1164
+Trial 3
+Errors
+1
+Position
+5
+Time
+2475
+Layout 2
+Trial 1
+Errors
+0
+Position
+5
+Time
+1257
+Trial 2
+Errors
+0
+Position
+4
+Time
+1099
+Trial 3
+Errors
+0
+Position
+6
+Time
+1077
+Layout 3
+Trial 1
+Errors
+0
+Position
+6
+Time
+1260
+Trial 2
+Errors
+0
+Position
+2
+Time
+926
+Trial 3
+Errors
+0
+Position
+1
+Time
+806
+Layout 4
+Trial 1
+Errors
+0
+Position
+5
+Time
+931
+Trial 2
+Errors
+0
+Position
+3
+Time
+977
+Trial 3
+Errors
+0
+Position
+1
+Time
+862
+Layout 5
+Trial 1
+Errors
+0
+Position
+4
+Time
+1091
+Trial 2
+Errors
+0
+Position
+1
+Time
+874
+Trial 3
+Errors
+0
+Position
+7
+Time
+1158
+Layout 6
+Trial 1
+Errors
+0
+Position
+0
+Time
+973
+Trial 2
+Errors
+0
+Position
+4
+Time
+990
+Trial 3
+Errors
+0
+Position
+2
+Time
+917
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+4
+Time
+1375
+Trial 2
+Errors
+0
+Position
+3
+Time
+1002
+Trial 3
+Errors
+0
+Position
+0
+Time
+1140
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+3
+Time
+876
+Trial 2
+Errors
+0
+Position
+1
+Time
+738
+Trial 3
+Errors
+0
+Position
+0
+Time
+860
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+841
+Trial 2
+Errors
+0
+Position
+4
+Time
+953
+Trial 3
+Errors
+0
+Position
+7
+Time
+1053
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+2
+Time
+739
+Trial 2
+Errors
+0
+Position
+5
+Time
+861
+Trial 3
+Errors
+0
+Position
+0
+Time
+916
+Participant 8
+Task 1
+Layout 1
+Trial 1
+Errors
+1
+Position
+3
+Time
+5955
+Trial 2
+Errors
+0
+Position
+6
+Time
+2296
+Trial 3
+Errors
+0
+Position
+6
+Time
+4090
+Layout 2
+Trial 1
+Errors
+0
+Position
+7
+Time
+1698
+Trial 2
+Errors
+0
+Position
+7
+Time
+5322
+Trial 3
+Errors
+0
+Position
+7
+Time
+1610
+Layout 3
+Trial 1
+Errors
+0
+Position
+0
+Time
+1265
+Trial 2
+Errors
+0
+Position
+4
+Time
+936
+Trial 3
+Errors
+0
+Position
+0
+Time
+1038
+Layout 4
+Trial 1
+Errors
+0
+Position
+2
+Time
+1000
+Trial 2
+Errors
+0
+Position
+1
+Time
+780
+Trial 3
+Errors
+0
+Position
+1
+Time
+1878
+Layout 5
+Trial 1
+Errors
+0
+Position
+1
+Time
+1185
+Trial 2
+Errors
+0
+Position
+1
+Time
+901
+Trial 3
+Errors
+0
+Position
+3
+Time
+1360
+Layout 6
+Trial 1
+Errors
+0
+Position
+4
+Time
+820
+Trial 2
+Errors
+0
+Position
+6
+Time
+1073
+Trial 3
+Errors
+0
+Position
+1
+Time
+775
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+2
+Position
+5
+Time
+6516
+Trial 2
+Errors
+0
+Position
+3
+Time
+1190
+Trial 3
+Errors
+1
+Position
+4
+Time
+3043
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+1087
+Trial 2
+Errors
+0
+Position
+0
+Time
+2337
+Trial 3
+Errors
+2
+Position
+5
+Time
+11378
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+5
+Time
+1680
+Trial 2
+Errors
+0
+Position
+6
+Time
+2199
+Trial 3
+Errors
+0
+Position
+3
+Time
+1571
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+7
+Time
+2059
+Trial 2
+Errors
+0
+Position
+1
+Time
+1321
+Trial 3
+Errors
+0
+Position
+1
+Time
+776
+Participant 9
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+2
+Time
+1310
+Trial 2
+Errors
+0
+Position
+2
+Time
+2276
+Trial 3
+Errors
+0
+Position
+1
+Time
+1169
+Layout 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+1109
+Trial 2
+Errors
+0
+Position
+6
+Time
+891
+Trial 3
+Errors
+0
+Position
+0
+Time
+1099
+Layout 3
+Trial 1
+Errors
+0
+Position
+0
+Time
+900
+Trial 2
+Errors
+0
+Position
+6
+Time
+1124
+Trial 3
+Errors
+0
+Position
+2
+Time
+757
+Layout 4
+Trial 1
+Errors
+0
+Position
+3
+Time
+914
+Trial 2
+Errors
+0
+Position
+2
+Time
+893
+Trial 3
+Errors
+1
+Position
+7
+Time
+1732
+Layout 5
+Trial 1
+Errors
+0
+Position
+6
+Time
+733
+Trial 2
+Errors
+0
+Position
+5
+Time
+777
+Trial 3
+Errors
+0
+Position
+3
+Time
+754
+Layout 6
+Trial 1
+Errors
+0
+Position
+5
+Time
+795
+Trial 2
+Errors
+0
+Position
+3
+Time
+923
+Trial 3
+Errors
+0
+Position
+0
+Time
+910
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+1
+Position
+7
+Time
+1677
+Trial 2
+Errors
+0
+Position
+4
+Time
+814
+Trial 3
+Errors
+1
+Position
+4
+Time
+1680
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+787
+Trial 2
+Errors
+0
+Position
+5
+Time
+810
+Trial 3
+Errors
+0
+Position
+1
+Time
+863
+FeedbackType 3
+Trial 1
+Errors
+1
+Position
+4
+Time
+1871
+Trial 2
+Errors
+0
+Position
+1
+Time
+811
+Trial 3
+Errors
+0
+Position
+0
+Time
+944
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+1
+Time
+833
+Trial 2
+Errors
+0
+Position
+6
+Time
+807
+Trial 3
+Errors
+0
+Position
+1
+Time
+796
+Participant 10
+Task 1
+Layout 1
+Trial 1
+Errors
+1
+Position
+1
+Time
+4597
+Trial 2
+Errors
+0
+Position
+4
+Time
+1269
+Trial 3
+Errors
+0
+Position
+0
+Time
+1070
+Layout 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+902
+Trial 2
+Errors
+0
+Position
+7
+Time
+903
+Trial 3
+Errors
+0
+Position
+0
+Time
+900
+Layout 3
+Trial 1
+Errors
+0
+Position
+5
+Time
+1110
+Trial 2
+Errors
+0
+Position
+4
+Time
+888
+Trial 3
+Errors
+0
+Position
+7
+Time
+926
+Layout 4
+Trial 1
+Errors
+0
+Position
+4
+Time
+840
+Trial 2
+Errors
+0
+Position
+7
+Time
+751
+Trial 3
+Errors
+0
+Position
+6
+Time
+719
+Layout 5
+Trial 1
+Errors
+0
+Position
+1
+Time
+873
+Trial 2
+Errors
+0
+Position
+2
+Time
+788
+Trial 3
+Errors
+0
+Position
+7
+Time
+744
+Layout 6
+Trial 1
+Errors
+0
+Position
+3
+Time
+902
+Trial 2
+Errors
+0
+Position
+6
+Time
+811
+Trial 3
+Errors
+0
+Position
+0
+Time
+1044
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+5
+Time
+943
+Trial 2
+Errors
+0
+Position
+5
+Time
+787
+Trial 3
+Errors
+1
+Position
+2
+Time
+1703
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+674
+Trial 2
+Errors
+0
+Position
+6
+Time
+641
+Trial 3
+Errors
+0
+Position
+6
+Time
+670
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+4
+Time
+641
+Trial 2
+Errors
+0
+Position
+1
+Time
+686
+Trial 3
+Errors
+0
+Position
+3
+Time
+701
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+3
+Time
+845
+Trial 2
+Errors
+1
+Position
+2
+Time
+1555
+Trial 3
+Errors
+0
+Position
+2
+Time
+771
+Participant 11
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+0
+Time
+931
+Trial 2
+Errors
+1
+Position
+6
+Time
+2318
+Trial 3
+Errors
+0
+Position
+1
+Time
+908
+Layout 2
+Trial 1
+Errors
+0
+Position
+2
+Time
+775
+Trial 2
+Errors
+0
+Position
+2
+Time
+842
+Trial 3
+Errors
+0
+Position
+5
+Time
+687
+Layout 3
+Trial 1
+Errors
+0
+Position
+0
+Time
+751
+Trial 2
+Errors
+0
+Position
+3
+Time
+765
+Trial 3
+Errors
+0
+Position
+0
+Time
+702
+Layout 4
+Trial 1
+Errors
+1
+Position
+4
+Time
+1597
+Trial 2
+Errors
+1
+Position
+1
+Time
+1340
+Trial 3
+Errors
+1
+Position
+2
+Time
+1430
+Layout 5
+Trial 1
+Errors
+0
+Position
+0
+Time
+659
+Trial 2
+Errors
+0
+Position
+0
+Time
+722
+Trial 3
+Errors
+0
+Position
+1
+Time
+641
+Layout 6
+Trial 1
+Errors
+0
+Position
+6
+Time
+675
+Trial 2
+Errors
+0
+Position
+0
+Time
+669
+Trial 3
+Errors
+0
+Position
+1
+Time
+674
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+4
+Time
+803
+Trial 2
+Errors
+0
+Position
+0
+Time
+723
+Trial 3
+Errors
+0
+Position
+0
+Time
+746
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+3
+Time
+749
+Trial 2
+Errors
+0
+Position
+6
+Time
+716
+Trial 3
+Errors
+0
+Position
+5
+Time
+665
+FeedbackType 3
+Trial 1
+Errors
+1
+Position
+6
+Time
+1562
+Trial 2
+Errors
+1
+Position
+7
+Time
+1334
+Trial 3
+Errors
+0
+Position
+3
+Time
+756
+FeedbackType 4
+Trial 1
+Errors
+0
+Position
+1
+Time
+666
+Trial 2
+Errors
+0
+Position
+3
+Time
+706
+Trial 3
+Errors
+0
+Position
+7
+Time
+683
+Participant 12
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+2
+Time
+1297
+Trial 2
+Errors
+0
+Position
+3
+Time
+1391
+Trial 3
+Errors
+0
+Position
+2
+Time
+1089
+Layout 2
+Trial 1
+Errors
+0
+Position
+7
+Time
+2277
+Trial 2
+Errors
+0
+Position
+5
+Time
+948
+Trial 3
+Errors
+0
+Position
+4
+Time
+968
+Layout 3
+Trial 1
+Errors
+0
+Position
+2
+Time
+999
+Trial 2
+Errors
+0
+Position
+3
+Time
+1046
+Trial 3
+Errors
+0
+Position
+2
+Time
+1005
+Layout 4
+Trial 1
+Errors
+0
+Position
+0
+Time
+1246
+Trial 2
+Errors
+0
+Position
+2
+Time
+936
+Trial 3
+Errors
+0
+Position
+4
+Time
+895
+Layout 5
+Trial 1
+Errors
+0
+Position
+6
+Time
+971
+Trial 2
+Errors
+0
+Position
+6
+Time
+834
+Trial 3
+Errors
+0
+Position
+6
+Time
+844
+Layout 6
+Trial 1
+Errors
+0
+Position
+7
+Time
+836
+Trial 2
+Errors
+0
+Position
+7
+Time
+818
+Trial 3
+Errors
+0
+Position
+2
+Time
+906
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+4
+Time
+900
+Trial 2
+Errors
+0
+Position
+4
+Time
+1077
+Trial 3
+Errors
+0
+Position
+3
+Time
+985
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+925
+Trial 2
+Errors
+0
+Position
+0
+Time
+899
+Trial 3
+Errors
+3
+Position
+6
+Time
+9054
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+891
+Trial 2
+Errors
+0
+Position
+3
+Time
+1086
+Trial 3
+Errors
+0
+Position
+7
+Time
+1070
+FeedbackType 4
+Trial 1
+Errors
+2
+Position
+6
+Time
+6726
+Trial 2
+Errors
+0
+Position
+0
+Time
+941
+Trial 3
+Errors
+0
+Position
+7
+Time
+973
+Participant 13
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+2
+Time
+1297
+Trial 2
+Errors
+0
+Position
+3
+Time
+1391
+Trial 3
+Errors
+0
+Position
+2
+Time
+1089
+Layout 2
+Trial 1
+Errors
+0
+Position
+7
+Time
+2277
+Trial 2
+Errors
+0
+Position
+5
+Time
+948
+Trial 3
+Errors
+0
+Position
+4
+Time
+968
+Layout 3
+Trial 1
+Errors
+0
+Position
+2
+Time
+999
+Trial 2
+Errors
+0
+Position
+3
+Time
+1046
+Trial 3
+Errors
+0
+Position
+2
+Time
+1005
+Layout 4
+Trial 1
+Errors
+0
+Position
+0
+Time
+1246
+Trial 2
+Errors
+0
+Position
+2
+Time
+936
+Trial 3
+Errors
+0
+Position
+4
+Time
+895
+Layout 5
+Trial 1
+Errors
+0
+Position
+6
+Time
+971
+Trial 2
+Errors
+0
+Position
+6
+Time
+834
+Trial 3
+Errors
+0
+Position
+6
+Time
+844
+Layout 6
+Trial 1
+Errors
+0
+Position
+7
+Time
+836
+Trial 2
+Errors
+0
+Position
+7
+Time
+818
+Trial 3
+Errors
+0
+Position
+2
+Time
+906
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+4
+Time
+900
+Trial 2
+Errors
+0
+Position
+4
+Time
+1077
+Trial 3
+Errors
+0
+Position
+3
+Time
+985
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+925
+Trial 2
+Errors
+0
+Position
+0
+Time
+899
+Trial 3
+Errors
+3
+Position
+6
+Time
+9054
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+891
+Trial 2
+Errors
+0
+Position
+3
+Time
+1086
+Trial 3
+Errors
+0
+Position
+7
+Time
+1070
+FeedbackType 4
+Trial 1
+Errors
+2
+Position
+6
+Time
+6726
+Trial 2
+Errors
+0
+Position
+0
+Time
+941
+Trial 3
+Errors
+0
+Position
+7
+Time
+973
+Participant 14
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+2
+Time
+1297
+Trial 2
+Errors
+0
+Position
+3
+Time
+1391
+Trial 3
+Errors
+0
+Position
+2
+Time
+1089
+Layout 2
+Trial 1
+Errors
+0
+Position
+7
+Time
+2277
+Trial 2
+Errors
+0
+Position
+5
+Time
+948
+Trial 3
+Errors
+0
+Position
+4
+Time
+968
+Layout 3
+Trial 1
+Errors
+0
+Position
+2
+Time
+999
+Trial 2
+Errors
+0
+Position
+3
+Time
+1046
+Trial 3
+Errors
+0
+Position
+2
+Time
+1005
+Layout 4
+Trial 1
+Errors
+0
+Position
+0
+Time
+1246
+Trial 2
+Errors
+0
+Position
+2
+Time
+936
+Trial 3
+Errors
+0
+Position
+4
+Time
+895
+Layout 5
+Trial 1
+Errors
+0
+Position
+6
+Time
+971
+Trial 2
+Errors
+0
+Position
+6
+Time
+834
+Trial 3
+Errors
+0
+Position
+6
+Time
+844
+Layout 6
+Trial 1
+Errors
+0
+Position
+7
+Time
+836
+Trial 2
+Errors
+0
+Position
+7
+Time
+818
+Trial 3
+Errors
+0
+Position
+2
+Time
+906
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+4
+Time
+900
+Trial 2
+Errors
+0
+Position
+4
+Time
+1077
+Trial 3
+Errors
+0
+Position
+3
+Time
+985
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+925
+Trial 2
+Errors
+0
+Position
+0
+Time
+899
+Trial 3
+Errors
+3
+Position
+6
+Time
+9054
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+891
+Trial 2
+Errors
+0
+Position
+3
+Time
+1086
+Trial 3
+Errors
+0
+Position
+7
+Time
+1070
+FeedbackType 4
+Trial 1
+Errors
+2
+Position
+6
+Time
+6726
+Trial 2
+Errors
+0
+Position
+0
+Time
+941
+Trial 3
+Errors
+0
+Position
+7
+Time
+973
+Participant 15
+Task 1
+Layout 1
+Trial 1
+Errors
+0
+Position
+2
+Time
+1297
+Trial 2
+Errors
+0
+Position
+3
+Time
+1391
+Trial 3
+Errors
+0
+Position
+2
+Time
+1089
+Layout 2
+Trial 1
+Errors
+0
+Position
+7
+Time
+2277
+Trial 2
+Errors
+0
+Position
+5
+Time
+948
+Trial 3
+Errors
+0
+Position
+4
+Time
+968
+Layout 3
+Trial 1
+Errors
+0
+Position
+2
+Time
+999
+Trial 2
+Errors
+0
+Position
+3
+Time
+1046
+Trial 3
+Errors
+0
+Position
+2
+Time
+1005
+Layout 4
+Trial 1
+Errors
+0
+Position
+0
+Time
+1246
+Trial 2
+Errors
+0
+Position
+2
+Time
+936
+Trial 3
+Errors
+0
+Position
+4
+Time
+895
+Layout 5
+Trial 1
+Errors
+0
+Position
+6
+Time
+971
+Trial 2
+Errors
+0
+Position
+6
+Time
+834
+Trial 3
+Errors
+0
+Position
+6
+Time
+844
+Layout 6
+Trial 1
+Errors
+0
+Position
+7
+Time
+836
+Trial 2
+Errors
+0
+Position
+7
+Time
+818
+Trial 3
+Errors
+0
+Position
+2
+Time
+906
+Task 2
+FeedbackType 1
+Trial 1
+Errors
+0
+Position
+4
+Time
+900
+Trial 2
+Errors
+0
+Position
+4
+Time
+1077
+Trial 3
+Errors
+0
+Position
+3
+Time
+985
+FeedbackType 2
+Trial 1
+Errors
+0
+Position
+1
+Time
+925
+Trial 2
+Errors
+0
+Position
+0
+Time
+899
+Trial 3
+Errors
+3
+Position
+6
+Time
+9054
+FeedbackType 3
+Trial 1
+Errors
+0
+Position
+1
+Time
+891
+Trial 2
+Errors
+0
+Position
+3
+Time
+1086
+Trial 3
+Errors
+0
+Position
+7
+Time
+1070
+FeedbackType 4
+Trial 1
+Errors
+2
+Position
+6
+Time
+6726
+Trial 2
+Errors
+0
+Position
+0
+Time
+941
+Trial 3
+Errors
+0
+Position
+7
+Time
+973
