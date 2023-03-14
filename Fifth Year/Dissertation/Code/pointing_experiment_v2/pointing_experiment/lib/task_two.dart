@@ -100,7 +100,7 @@ Future _uploadData() async {
   String uniqueID =
       "${now.hour}:${now.minute}:${now.second} ${now.day}:${now.month}";
   final docUser = FirebaseFirestore.instance
-      .collection("Experiment Data")
+      .collection("Experiment Data Young")
       .doc("Participant ${(participant + 1)}: Task 2 $uniqueID");
   await docUser.set(participantData);
 }
@@ -112,11 +112,11 @@ class TaskTwo extends StatefulWidget {
   State<TaskTwo> createState() => _TaskTwoState();
 }
 
-double convertMMToPixel(double mm) {
-  return mm * 1;
-}
-
 class _TaskTwoState extends State<TaskTwo> {
+  double spacing = 6;
+  double buttonSize = 30;
+  int selected = -1;
+  double borderThickness = 2.0;
   final player = AudioPlayer();
 
   @override
@@ -126,10 +126,64 @@ class _TaskTwoState extends State<TaskTwo> {
     setAduio();
   }
 
-  double spacing = convertMMToPixel(6);
-  double buttonSize = convertMMToPixel(30);
-  int selected = -1;
-  double borderThickness = 0.0;
+  void _onButtonPressed(int index) {
+    if (selected == index) {
+      _endTimer();
+      _updateTrial(context, selected);
+      started = false;
+      setState(() {
+        selected = -1;
+      });
+    } else {
+      _incrementErrors(player);
+    }
+  }
+
+  Widget _buildButton(int index) {
+    return SizedBox(
+      height: buttonSize,
+      width: buttonSize,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: selected == index ? Colors.blue : Colors.white,
+          side: BorderSide(width: borderThickness),
+        ),
+        child: const Text(""),
+        onPressed: () => _onButtonPressed(index),
+      ),
+    );
+  }
+
+  Widget _buildStartButton() {
+    return SizedBox(
+      height: buttonSize,
+      width: buttonSize,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          side: BorderSide(width: borderThickness),
+          backgroundColor: Colors.green,
+        ),
+        child: const Text(
+          "",
+          style: TextStyle(
+            fontSize: 6.0,
+            color: Colors.black,
+          ),
+        ),
+        onPressed: () {
+          if (!started) {
+            setState(() {
+              selected = Random().nextInt(8);
+            });
+            started = true;
+            _startTimer();
+          } else {
+            _incrementErrors(player);
+          }
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,100 +191,33 @@ class _TaskTwoState extends State<TaskTwo> {
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
-          setState(() {
-            _incrementErrors(player);
-          });
+          _incrementErrors(player);
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Participant: ${(participant + 1)}"),
-            Text("Trial: ${(taskTwoTrial % 3) + 1}"),
-            Text("Layout: ${feedbackType + 1}"),
-            Text("Errors: $errors"),
-            const Text("Click the green button to begin trial!"),
+            // Text("Trial: ${(taskTwoTrial % 3) + 1}"),
+            // Text("Layout: ${feedbackType + 1}"),
+            const Text(
+              "Click the green button to begin trial!",
+              style: TextStyle(fontSize: 20),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 0 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () async {
-                        setState(() {
-                          if (selected == 0) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(0),
                   SizedBox(
                     width: spacing,
                   ),
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 1 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () {
-                        setState(() {
-                          if (selected == 1) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(1),
                   SizedBox(
                     width: spacing,
                   ),
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 2 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () {
-                        setState(() {
-                          if (selected == 2) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(2)
                 ],
               ),
               SizedBox(
@@ -239,88 +226,15 @@ class _TaskTwoState extends State<TaskTwo> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 3 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () {
-                        setState(() {
-                          if (selected == 3) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(3),
                   SizedBox(
                     width: spacing,
                   ),
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        side: BorderSide(width: borderThickness),
-                        backgroundColor: Colors.green,
-                      ),
-                      child: const Text(
-                        "",
-                        style: TextStyle(
-                          fontSize: 6.0,
-                          color: Colors.black,
-                        ),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          if (!started) {
-                            selected = Random().nextInt(8);
-                            started = true;
-                            _startTimer();
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildStartButton(),
                   SizedBox(
                     width: spacing,
                   ),
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 4 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () {
-                        setState(() {
-                          if (selected == 4) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(4)
                 ],
               ),
               SizedBox(
@@ -329,88 +243,18 @@ class _TaskTwoState extends State<TaskTwo> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 5 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () {
-                        setState(() {
-                          if (selected == 5) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(5),
                   SizedBox(
                     width: spacing,
                   ),
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 6 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () {
-                        setState(() {
-                          if (selected == 6) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(6),
                   SizedBox(
                     width: spacing,
                   ),
-                  SizedBox(
-                    height: buttonSize,
-                    width: buttonSize,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                            selected == 7 ? Colors.blue : Colors.white,
-                        side: BorderSide(width: borderThickness),
-                      ),
-                      child: const Text(""),
-                      onPressed: () {
-                        setState(() {
-                          if (selected == 7) {
-                            _endTimer();
-                            _updateTrial(context, selected);
-                            started = false;
-                            selected = -1;
-                          } else {
-                            _incrementErrors(player);
-                          }
-                        });
-                      },
-                    ),
-                  ),
+                  _buildButton(7)
                 ],
               ),
             ]),
-            if (!started) Text("$totalTime"),
           ],
         ),
       ),

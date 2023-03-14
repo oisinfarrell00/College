@@ -16,7 +16,8 @@ class _TaskTwoCompleteState extends State<TaskTwoComplete> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-              "Thank you for completing both tasks. Your participation is greatly appreciated"),
+              "Thank you for completing both tasks. Your participation is greatly appreciated",
+              style: TextStyle(fontSize: 20)),
           Center(
             child: ElevatedButton(
                 style: OutlinedButton.styleFrom(

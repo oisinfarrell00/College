@@ -36,14 +36,21 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return const TaskOne();
-              }));
-            },
-            child: const Text("START EXPERIMENT")),
+        child: SizedBox(
+          width: 225,
+          height: 75,
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return const TaskOne();
+                }));
+              },
+              child: const Text(
+                "START EXPERIMENT",
+                style: TextStyle(fontSize: 20),
+              )),
+        ),
       ),
     );
   }
