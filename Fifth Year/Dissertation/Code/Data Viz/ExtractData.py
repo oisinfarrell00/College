@@ -125,7 +125,7 @@ def writeToJSONFile(json_to_file, filename):
         outfile.write(json_object)
 
 
-with open('ExpData.txt') as f:
+with open('ExpDataYoung.txt') as f:
     lines = []
     num_participants = 0
     while True:
@@ -136,4 +136,4 @@ with open('ExpData.txt') as f:
             num_participants = num_participants + 1
         lines.append(line.strip("\n"))
 
-writeToJSONFile(parse_data(lines, num_participants), "All Older Adults.json")
+writeToJSONFile(parse_data(lines, num_participants), "AllYoungerData.json")
