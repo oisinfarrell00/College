@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import json
-f = open('C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Dissertation\\Experiments\\Experiment Data\\AllOlderAdults.json')
+f = open('C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Dissertation\\Experiments\\Experiment Data\\AllYoungerData.json')
 data = json.load(f)
 
 
@@ -28,6 +28,7 @@ y_location_errors = np.array(feedback_errors)
 
 # Create a figure with two subplots
 fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
+fig.suptitle("Younger Participants", fontsize=15)
 
 # Plot the first subplot
 axs[0].bar(x, y_location_times, width=0.4,
@@ -37,6 +38,7 @@ axs[0].set_xlabel('Button Feedback Type')
 axs[0].xaxis.set_label_coords(.5, -.1)
 axs[0].set_ylabel('Task Completion Time (Seconds)')
 axs[0].set_xticks(x)
+axs[0].set_ylim(0, 3.2)
 axs[0].set_xticklabels(['None', 'Audio', 'Vibration',
                        'AudioTactile'])
 
@@ -53,6 +55,7 @@ axs[1].set_xlabel('Button Feedback Type')
 axs[1].xaxis.set_label_coords(.5, -.1)
 axs[1].set_ylabel('Number of Errors')
 axs[1].set_xticks(x)
+axs[1].set_ylim(0, 1.2)
 axs[1].set_xticklabels(['None', 'Audio', 'Vibration',
                        'AudioTactile'])
 

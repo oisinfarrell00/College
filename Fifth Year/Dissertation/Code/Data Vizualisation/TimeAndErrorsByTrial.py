@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import json
-f = open('C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Dissertation\\Experiments\\Experiment Data\\AllOlderAdults.json')
+f = open('C:\\Users\\oisin\\Documents\\College\\Fifth-Year\\Dissertation\\Experiments\\Experiment Data\\AllYoungerData.json')
 data = json.load(f)
 
 
@@ -56,6 +56,7 @@ y_trial_errors_3mm = np.array(trial_errors_3mm)
 
 # Create a figure with two subplots
 fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
+fig.suptitle("Younger Participants", fontsize=15)
 
 # Plot the first subplot
 axs[0].bar(x-0.2, y_trial_times_1mm, width=0.4,
@@ -67,6 +68,7 @@ axs[0].set_xlabel('Button sizes')
 axs[0].xaxis.set_label_coords(.5, -.1)
 axs[0].set_ylabel('Task Completion Time (Seconds)')
 axs[0].set_xticks(x)
+axs[0].set_ylim(0, 3.7)
 axs[0].set_xticklabels(['5mm', '8mm', '12mm', '5mm',
                        '8mm', '12mm', '5mm',
                         '8mm', '12mm'])
@@ -93,8 +95,9 @@ axs[1].set_xlabel('Button Size')
 axs[1].xaxis.set_label_coords(.5, -.1)
 axs[1].set_ylabel('Number of Errors')
 axs[1].set_xticks(x)
+axs[1].set_ylim(0, 2)
 axs[1].set_xticklabels(['5mm', '8mm', '12mm', '5mm',
-                       '8mm', '12mm', 'test', 'test', 'test'])
+                       '8mm', '12mm', '5mm', '8mm', '12mm'])
 axs[1].text(0.2, -0.07, 'Trial 1', transform=axs[1].transAxes, ha='center')
 axs[1].text(.5, -0.07, 'Trial 2', transform=axs[1].transAxes, ha='center')
 axs[1].text(.8, -0.07, 'Trial 3', transform=axs[1].transAxes, ha='center')
@@ -110,6 +113,7 @@ for i, v in enumerate(y_trial_errors_3mm):
 
 # Adjust spacing between subplots
 fig.tight_layout()
+
 
 # Show the figure
 plt.show()

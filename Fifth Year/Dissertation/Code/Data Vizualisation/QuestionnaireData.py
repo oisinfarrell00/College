@@ -12,6 +12,7 @@ prefered_feedback_young = np.array([5, 8, 2])
 
 # Create a figure with two subplots
 fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
+fig.suptitle("Post Experiment Questionnaire", fontsize=15)
 
 # Plot the first subplot
 axs[0].bar(x-0.2, obvious_feedback_old, width=0.4,
